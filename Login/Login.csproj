@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Pass-icon.png" />
+    <None Remove="Images\ShoppingCart.jpg" />
+    <None Remove="Images\SIGAME_logo.png" />
+    <None Remove="Images\SIGAME_Logo_byn.png" />
+    <None Remove="Images\User-icon.png" />
+    <None Remove="Resources\ICONS\fork.png" />
+    <None Remove="Resources\ICONS\handbag.png" />
+    <None Remove="Resources\ICONS\home.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\ICONS\fork.png" />
+    <Resource Include="Resources\ICONS\handbag.png" />
+    <Resource Include="Resources\ICONS\home.png" />
+  </ItemGroup>
+
+</Project>
