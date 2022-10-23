@@ -49,7 +49,6 @@ namespace Login
                     int contar = ds.Tables[0].Rows.Count;
                     if (contar == 1)
                     {
-                        MessageBox.Show("Ingreso Satisfactorio");
                         this.Hide();
                         Dashboard frm = new Dashboard();
                         frm.Show();
