@@ -38,6 +38,7 @@
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -115,9 +116,9 @@
             this.lblUsuario.ForeColor = System.Drawing.Color.Red;
             this.lblUsuario.Location = new System.Drawing.Point(96, 294);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(37, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(129, 13);
             this.lblUsuario.TabIndex = 7;
-            this.lblUsuario.Text = "label1";
+            this.lblUsuario.Text = "(queda para no perderlo)";
             // 
             // lblPassword
             // 
@@ -126,15 +127,25 @@
             this.lblPassword.ForeColor = System.Drawing.Color.Red;
             this.lblPassword.Location = new System.Drawing.Point(96, 370);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(37, 13);
+            this.lblPassword.Size = new System.Drawing.Size(129, 13);
             this.lblPassword.TabIndex = 8;
-            this.lblPassword.Text = "label1";
+            this.lblPassword.Text = "(queda para no perderlo)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(117, 433);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(193, 19);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Usr Nokuaru Pass 123456";
             // 
             // formLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 461);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblTitle);
@@ -169,5 +180,6 @@
         private Label lblPass;
         private Label lblUsuario;
         private Label lblPassword;
+        private Label label1;
     }
 }

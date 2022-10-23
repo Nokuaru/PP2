@@ -16,13 +16,13 @@ namespace Login.Data
             try
             {
                 Conexion con = new Conexion();
-                string sql = "SELECT * FROM Productos;";
+                string sql = "SELECT * FROM Producto;";
                 SqlCommand cmd = new SqlCommand(sql, con.Conectar());
                 SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                DataTable dt = new DataTable();
-                dt.Load(dr);
+                DataTable dtProducto = new DataTable();
+                dtProducto.Load(dr);
                 con.Desconectar();
-                return dt;
+                return dtProducto;
 
             } catch (Exception ex)
             {

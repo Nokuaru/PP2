@@ -47,8 +47,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgCompra = new System.Windows.Forms.DataGridView();
+            this.dgVenta = new System.Windows.Forms.DataGridView();
             this.dgProductos = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -59,8 +59,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picHome)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCompra)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -298,23 +298,23 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "PRODUCTOS";
             // 
-            // dataGridView1
+            // dgCompra
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(118, 173);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(1054, 165);
-            this.dataGridView1.TabIndex = 6;
+            this.dgCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCompra.Location = new System.Drawing.Point(118, 173);
+            this.dgCompra.Name = "dgCompra";
+            this.dgCompra.RowTemplate.Height = 25;
+            this.dgCompra.Size = new System.Drawing.Size(1054, 165);
+            this.dgCompra.TabIndex = 6;
             // 
-            // dataGridView2
+            // dgVenta
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(118, 367);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(1054, 165);
-            this.dataGridView2.TabIndex = 9;
+            this.dgVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVenta.Location = new System.Drawing.Point(118, 367);
+            this.dgVenta.Name = "dgVenta";
+            this.dgVenta.RowTemplate.Height = 25;
+            this.dgVenta.Size = new System.Drawing.Size(1054, 165);
+            this.dgVenta.TabIndex = 9;
             // 
             // dgProductos
             // 
@@ -331,8 +331,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
             this.Controls.Add(this.dgProductos);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgVenta);
+            this.Controls.Add(this.dgCompra);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -357,8 +357,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picHome)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCompra)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -393,5 +393,9 @@
         private PictureBox picCompras;
         private PictureBox picVentas;
         private PictureBox picHome;
+        private DataGridView dtCompra;
+        private DataGridView dtVenta;
+        private DataGridView dgCompra;
+        private DataGridView dgVenta;
     }
 }

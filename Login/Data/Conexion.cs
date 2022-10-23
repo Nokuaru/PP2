@@ -13,7 +13,7 @@ namespace Login.Data
 
         public Conexion()
         {
-            con = new SqlConnection(@"Data Source = PREMIERE; Initial Catalog = pp2_test; Integrated Security = True");
+            con = new SqlConnection(@"Data Source = PREMIERE; Initial Catalog = Grupo42; Integrated Security = True");
         }
 
         public SqlConnection Conectar()

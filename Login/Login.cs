@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using Login.Data;
 
 namespace Login
 
@@ -12,7 +13,7 @@ namespace Login
             InitializeComponent();
         }
 
-        string cc = @"Data Source = PREMIERE; Initial Catalog = pp2_test; Integrated Security = True";
+        string cc = @"Data Source = PREMIERE; Initial Catalog = Grupo42; Integrated Security = True";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -29,21 +30,22 @@ namespace Login
 
             else if (txtUsuario.Text == "")
             {
-                lblUsuario.Text = "Ingrese la contraseña";
+                lblUsuario.Text = "Ingrese un usuario";
             }
 
             else {
                 try
                 {
-                    SqlConnection con2 = new SqlConnection(cc);
-                    SqlCommand cmd = new SqlCommand("Select * from Usuarios WHERE Usuario =@usuario and Pass = @password", con2);
+                    Conexion con = new Conexion();
+                    string sql = "Select * from Usuario WHERE Usuario =@usuario and Pass = @password";
+                    SqlCommand cmd = new SqlCommand(sql, con.Conectar());
                     cmd.Parameters.AddWithValue("@usuario", txtUsuario.Text);
                     cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                    con2.Open();
+                    con.Desconectar();
                     SqlDataAdapter adapt = new SqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adapt.Fill(ds);
-                    con2.Close();
+                    con.Desconectar();
                     int contar = ds.Tables[0].Rows.Count;
                     if (contar == 1)
                     {
