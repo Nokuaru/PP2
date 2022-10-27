@@ -3,8 +3,8 @@ GO
 
 /************** CREACIÓN DE VISTAS **************/
 
--- CREA V_Compras_UltimasCompras
-/****** V_Compras_UltimasCompras    Script Date: 27/10/2022 17:58:12 ******/
+-- CREA V_Compra_UltimasCompras
+/****** V_Compra_UltimasCompras    Script Date: 27/10/2022 17:58:12 ******/
 SET ANSI_NULLS ON
 GO
 
