@@ -21,3 +21,19 @@ FROM            dbo.Compra INNER JOIN
                          dbo.Proveedor ON dbo.Producto.idProveedor = dbo.Proveedor.idProveedor
 ORDER BY dbo.Compra.FechaCompra DESC
 GO
+
+USE [Grupo42]
+GO
+
+/****** CREA V_PRODUCTO_PRODUCTOS ******/
+/****** Object:  View [dbo].[V_Producto_Productos]    Script Date: 27/10/2022 18:29:28 ******/
+
+
+CREATE VIEW [dbo].[V_Producto_Productos]
+AS
+SELECT        dbo.CategoriaProducto.DescripcionCatProd AS [Tipo de Producto], dbo.Producto.Nombre, dbo.Proveedor.RazonSocial AS Proveedor, dbo.Producto.Cantidad, 
+                         dbo.Producto.PrecioUnitarioCompra AS [Precio Unitario Compra], dbo.Producto.PrecioUnitarioVenta AS [Precio Unitario Venta]
+FROM            dbo.Producto INNER JOIN
+                         dbo.CategoriaProducto ON dbo.Producto.idCategoria = dbo.CategoriaProducto.idCategoria INNER JOIN
+                         dbo.Proveedor ON dbo.Producto.idProveedor = dbo.Proveedor.idProveedor
+GO
