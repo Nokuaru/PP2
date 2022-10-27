@@ -5,42 +5,49 @@ GO
 --DROP TABLE DetalleVenta, DetalleCompra, Venta, Compra, Producto, Proveedor, Usuario, Cliente, EstadoCliente, EstadoVenta, FormaPago, CategoriaProducto,EstadoCompra,EstadoUsuario
 
 -- CREA TABLA ESTADOUSUARIO
+DROP TABLE IF EXISTS EstadoUsuario
 CREATE TABLE EstadoUsuario (
 	idEstadoUsuario TINYINT IDENTITY PRIMARY KEY NOT NULL,
 	DescripcionEstadoUsuario varchar(20) NOT NULL
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA ESTADOVENTA
+DROP TABLE IF EXISTS EstadoVenta
 CREATE TABLE EstadoVenta (
 	idEstadoVenta TINYINT IDENTITY PRIMARY KEY NOT NULL,
 	DescripcionEstadoVenta varchar(20) NOT NULL
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA FORMAPAGO
+DROP TABLE IF EXISTS FormaPago
 CREATE TABLE FormaPago (
 	idFormaPago TINYINT IDENTITY PRIMARY KEY NOT NULL,
 	DescripcionFormaPago varchar(20) NOT NULL
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA CATEGORIAPRODUCTO
+DROP TABLE IF EXISTS CategoriaProducto
 CREATE TABLE CategoriaProducto (
 	idCategoria TINYINT IDENTITY PRIMARY KEY NOT NULL,
 	DescripcionCatProd varchar(20) NOT NULL,
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA ESTADOCOMPRA
+DROP TABLE IF EXISTS EstadoCompra
 CREATE TABLE EstadoCompra (
 	idEstadoCompra TINYINT IDENTITY NOT NULL PRIMARY KEY,
 	DescripcionEstadoCompra varchar(50) NOT NULL
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA ESTADOCLIENTE
+DROP TABLE IF EXISTS EstadoCliente
 CREATE TABLE EstadoCliente (
 	idEstadoCliente TINYINT IDENTITY(1,1) PRIMARY KEY,
 	DescripcionEstadoCliente varchar(20)
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA USUARIO
+DROP TABLE IF EXISTS Usuario
 CREATE TABLE Usuario (
 	idUsuario SMALLINT IDENTITY(1000,1) PRIMARY KEY,
 	idEstadoUsuario TINYINT, -- FK EstadoUsuario.idEstadoUsuario
@@ -55,6 +62,7 @@ CREATE TABLE Usuario (
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA PROVEEDOR
+DROP TABLE IF EXISTS Proveedor
 CREATE TABLE Proveedor (
 	idProveedor SMALLINT IDENTITY (1000,1) PRIMARY KEY NOT NULL,
 	FechaAlta date NOT NULL CONSTRAINT FechaActual DEFAULT getdate(),
@@ -66,6 +74,7 @@ CREATE TABLE Proveedor (
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA CLIENTE
+DROP TABLE IF EXISTS Cliente 
 CREATE TABLE Cliente (
 	idCliente SMALLINT IDENTITY (1000,1) PRIMARY KEY,
 	idEstadoCliente TINYINT,
@@ -80,6 +89,7 @@ CREATE TABLE Cliente (
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA PRODUCTO
+DROP TABLE IF EXISTS Producto
 CREATE TABLE Producto (
 	idProducto INT IDENTITY (1000,1) NOT NULL PRIMARY KEY,
 	idCategoria TINYINT NOT NULL,
@@ -93,6 +103,7 @@ CREATE TABLE Producto (
 ) 
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA COMPRA
+DROP TABLE IF EXISTS Compra
 CREATE TABLE Compra (
 	idCompra INT IDENTITY (1000,1) NOT NULL PRIMARY KEY,
 	idUsuario SMALLINT NOT NULL,
@@ -108,6 +119,7 @@ CREATE TABLE Compra (
 
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA DETALLE COMPRA
+DROP TABLE IF EXISTS DetalleCompra
 CREATE TABLE DetalleCompra (
 	idDetalleCompra INT PRIMARY KEY IDENTITY (1000,1),
 	idCompra INT NOT NULL,
@@ -118,6 +130,7 @@ CREATE TABLE DetalleCompra (
 ) 
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA VENTA
+DROP TABLE IF EXISTS Venta
 CREATE TABLE Venta (
 	idVenta INT PRIMARY KEY IDENTITY (1000,1) NOT NULL,
 	idCliente SMALLINT NOT NULL,
@@ -135,6 +148,7 @@ CREATE TABLE Venta (
 )
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA DETALLE VENTA
+DROP TABLE IF EXISTS DetalleVenta
 CREATE TABLE DetalleVenta (
 	idDetalleVenta INT PRIMARY KEY IDENTITY (1000,1),
 	idVenta INT NOT NULL,
@@ -145,14 +159,14 @@ CREATE TABLE DetalleVenta (
 )
 
 
---AGREGAMOS UN POCO DE DATA AC¡
+--AGREGAMOS UN POCO DE DATA AC√Å
 
 INSERT INTO EstadoUsuario
 			VALUES ('Admin'),('Buffet'),('Kiosco'),('Baja Temporal'),('Baja Definitiva')
 INSERT INTO EstadoUsuario
 			VALUES ('Paga'),('Impaga')
 INSERT INTO FormaPago
-			VALUES ('Efectivo'),('DÈbito'),('CrÈdito'),('MercadoPago')
+			VALUES ('Efectivo'),('D√©bito'),('Cr√©dito'),('MercadoPago')
 INSERT INTO CategoriaProducto
 			VALUES ('Gaseosas'),('Jugos'),('Buffet'),('Golosinas'),('Comida')
 INSERT INTO EstadoCompra
@@ -160,7 +174,7 @@ INSERT INTO EstadoCompra
 INSERT INTO EstadoVenta
 			VALUES ('Pago'),('Impago')
 INSERT INTO EstadoCliente
-			VALUES ('Al dÌa'),('Deudor'),('Requiere sicario')
+			VALUES ('Al d√≠a'),('Deudor'),('Requiere sicario')
 INSERT INTO Usuario
 			VALUES	('1','Facundo','Tomas','32478178','nokuaru@gmail.com','Nokuaru','123456','1121739785'),
 					('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321')
@@ -170,7 +184,7 @@ INSERT INTO Proveedor (Cuit,RazonSocial,Direccion,Mail,Telefono)
 					('33333333333','PumperNic','Belgrano 5445' ,'c@c.com','42424242')
 INSERT INTO Cliente
 			VALUES	('1','Jorge','Capitanich','7894561', 'jorgito@gmail.com','1513254857',DEFAULT,DEFAULT),
-					('2','Alberto','Fern·ndez','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT)
+					('2','Alberto','Fern√°ndez','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT)
 INSERT INTO Producto (idCategoria,idProveedor,Nombre,Cantidad,PrecioUnitarioVenta,PrecioUnitarioCompra)
 			VALUES	('1','1001','Coca Cola 500ml','50','90.25','135'),
 					('5','1002','Empanada JyQ','23','73.55','155')
@@ -189,9 +203,3 @@ INSERT INTO DetalleCompra (idCompra,idProducto,Cantidad)
 					('1001','1000','7'),
 					('1001','1000','14')
 		
-
-
-
-
-
-
