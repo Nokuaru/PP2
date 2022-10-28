@@ -1,9 +1,13 @@
 USE [Grupo42]
 GO
 
-/************** CREACIÓN DE VISTAS **************/
 
--- CREA V_Compra_UltimasCompras
+/*********************************** CREACIÓN DE VISTAS ***********************************/
+
+
+/************************************************/
+/****** CREA V_Compra_UltimasCompras ************/
+/************************************************/
 /****** V_Compra_UltimasCompras    Script Date: 27/10/2022 17:58:12 ******/
 SET ANSI_NULLS ON
 GO
@@ -13,7 +17,7 @@ GO
 
 CREATE VIEW [dbo].[V_Compra_UltimasCompras]
 AS
-SELECT        TOP (100) PERCENT dbo.Compra.idCompra, dbo.Compra.Total, CONVERT(varchar, dbo.Compra.FechaCompra, 103) AS Expr1, dbo.Compra.TipoComprobante, dbo.Proveedor.RazonSocial, dbo.Producto.Cantidad, 
+SELECT        TOP (100) PERCENT dbo.Compra.idCompra, dbo.Compra.Total, CONVERT(varchar, dbo.Compra.FechaCompra, 103) AS [Fecha], dbo.Compra.TipoComprobante, dbo.Proveedor.RazonSocial, dbo.Producto.Cantidad, 
                          dbo.Producto.Nombre
 FROM            dbo.Compra INNER JOIN
                          dbo.DetalleCompra ON dbo.Compra.idCompra = dbo.DetalleCompra.idCompra INNER JOIN
@@ -24,10 +28,10 @@ GO
 
 USE [Grupo42]
 GO
-
+/***************************************/
 /****** CREA V_PRODUCTO_PRODUCTOS ******/
+/***************************************/
 /****** Object:  View [dbo].[V_Producto_Productos]    Script Date: 27/10/2022 18:29:28 ******/
-
 
 CREATE VIEW [dbo].[V_Producto_Productos]
 AS
@@ -37,3 +41,25 @@ FROM            dbo.Producto INNER JOIN
                          dbo.CategoriaProducto ON dbo.Producto.idCategoria = dbo.CategoriaProducto.idCategoria INNER JOIN
                          dbo.Proveedor ON dbo.Producto.idProveedor = dbo.Proveedor.idProveedor
 GO
+/***********************************/
+/****** CREA V_VENTA_DEUDORES ******/
+/***********************************/
+/****** Object:  View [dbo].[V_Venta_Deudores]    Script Date: 28/10/2022 11:40:23 ******/
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[V_Venta_Deudores]
+AS
+SELECT        dbo.Cliente.idCliente, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.Cliente.Telefono, SUM(dbo.Venta.Total) AS [Total Ventas], SUM(DISTINCT dbo.Venta.idVenta) AS [Cant ventas adeudadas], 
+                         dbo.Cliente.FechaEstadoCliente AS [Deudor Desde]
+FROM            dbo.Cliente INNER JOIN
+                         dbo.Venta ON dbo.Cliente.idCliente = dbo.Venta.idCliente INNER JOIN
+                         dbo.EstadoCliente ON dbo.Cliente.idEstadoCliente = dbo.EstadoCliente.idEstadoCliente
+WHERE        (dbo.EstadoCliente.idEstadoCliente = 2)
+GROUP BY dbo.Cliente.idCliente, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.Cliente.Telefono, dbo.Cliente.FechaEstadoCliente
+GO
+
