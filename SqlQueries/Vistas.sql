@@ -63,3 +63,22 @@ WHERE        (dbo.EstadoCliente.idEstadoCliente = 2)
 GROUP BY dbo.Cliente.idCliente, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.Cliente.Telefono, dbo.Cliente.FechaEstadoCliente
 GO
 
+
+/***********************************/
+/**** CREA V_VENTA_LISTADOVENTAS ***/
+/***********************************/
+/****** Object:  View [dbo].[V_Venta_ListadoVentas]    Script Date: 28/10/2022 14:16:47 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE VIEW [dbo].[V_Venta_ListadoVentas]
+AS
+SELECT        dbo.Venta.idVenta, CONVERT(varchar, dbo.Venta.FechaVenta, 103) AS Fecha, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.EstadoVenta.DescripcionEstadoVenta AS Estado, dbo.Venta.Total, 
+                         dbo.Venta.TipoComprobante
+FROM            dbo.Venta INNER JOIN
+                         dbo.Cliente ON dbo.Venta.idCliente = dbo.Cliente.idCliente INNER JOIN
+                         dbo.EstadoVenta ON dbo.Venta.idEstadoVenta = dbo.EstadoVenta.idEstadoVenta
+GO
