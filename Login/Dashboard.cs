@@ -18,7 +18,7 @@ namespace Login
         {
             InitializeComponent();
         }
-
+        /*
         public void llenarGrid()
         {
             DataTable datos = CRUD.cargar();
@@ -32,7 +32,7 @@ namespace Login
                 dgProductos.DataSource = datos.DefaultView;
             }
         }
-
+        */
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             System.Windows.Forms.Application.Exit();

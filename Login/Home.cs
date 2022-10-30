@@ -38,6 +38,10 @@ namespace Login
             nav(dashboard, pnlContent);
         }
 
-
+        private void navProducto_Click_1(object sender, EventArgs e)
+        {
+            Productos productos = new Productos();
+            nav(productos, pnlContent);
+        }
     }
 }

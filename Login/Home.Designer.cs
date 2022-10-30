@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.navProducto = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.navCompra = new System.Windows.Forms.PictureBox();
@@ -43,8 +51,12 @@
             this.navHome = new System.Windows.Forms.PictureBox();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pnlTop.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHome)).BeginInit();
@@ -53,12 +65,84 @@
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.pnlTop.Controls.Add(this.panel5);
+            this.pnlTop.Controls.Add(this.panel3);
+            this.pnlTop.Controls.Add(this.panel2);
             this.pnlTop.Controls.Add(this.pictureBox1);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1184, 98);
             this.pnlTop.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label11);
+            this.panel5.Location = new System.Drawing.Point(972, 12);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(200, 70);
+            this.panel5.TabIndex = 4;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(63, 15);
+            this.label11.Margin = new System.Windows.Forms.Padding(0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 21);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "USUARIO";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Location = new System.Drawing.Point(321, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 79);
+            this.panel3.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(23, 24);
+            this.label10.Margin = new System.Windows.Forms.Padding(0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(159, 21);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "COMPRA MENSUAL";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Location = new System.Drawing.Point(115, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 79);
+            this.panel2.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(32, 24);
+            this.label9.Margin = new System.Windows.Forms.Padding(0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(143, 21);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "VENTA MENSUAL";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
@@ -73,6 +157,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.navProducto);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.navCompra);
@@ -87,6 +174,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(109, 663);
             this.panel1.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(34, 317);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 15);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "SPACE";
+            this.label7.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(28, 302);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(61, 15);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Productos";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // navProducto
+            // 
+            this.navProducto.BackgroundImage = global::Login.Properties.Resources.shopping_cart;
+            this.navProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.navProducto.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.navProducto.Location = new System.Drawing.Point(3, 259);
+            this.navProducto.Name = "navProducto";
+            this.navProducto.Size = new System.Drawing.Size(103, 40);
+            this.navProducto.TabIndex = 9;
+            this.navProducto.TabStop = false;
+            this.navProducto.Click += new System.EventHandler(this.navProducto_Click_1);
             // 
             // label6
             // 
@@ -110,7 +229,7 @@
             // 
             // navCompra
             // 
-            this.navCompra.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("navCompra.BackgroundImage")));
+            this.navCompra.BackgroundImage = global::Login.Properties.Resources.handbag;
             this.navCompra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.navCompra.Cursor = System.Windows.Forms.Cursors.Hand;
             this.navCompra.Location = new System.Drawing.Point(3, 183);
@@ -182,7 +301,7 @@
             // 
             // pnlContent
             // 
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlContent.Location = new System.Drawing.Point(109, 98);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1075, 663);
@@ -197,12 +316,20 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTop);
             this.Name = "Home";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
             this.pnlTop.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.navProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHome)).EndInit();
@@ -224,5 +351,14 @@
         private Label label1;
         private PictureBox navHome;
         private Panel pnlContent;
+        private Label label7;
+        private Label label8;
+        private PictureBox navProducto;
+        private Panel panel5;
+        private Label label11;
+        private Panel panel3;
+        private Label label10;
+        private Panel panel2;
+        private Label label9;
     }
 }

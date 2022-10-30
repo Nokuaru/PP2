@@ -46,7 +46,7 @@
             this.dgProductos.Location = new System.Drawing.Point(12, 463);
             this.dgProductos.Name = "dgProductos";
             this.dgProductos.RowTemplate.Height = 25;
-            this.dgProductos.Size = new System.Drawing.Size(1027, 165);
+            this.dgProductos.Size = new System.Drawing.Size(1039, 165);
             this.dgProductos.TabIndex = 10;
             // 
             // label3
@@ -76,7 +76,7 @@
             this.dgVenta.Location = new System.Drawing.Point(12, 246);
             this.dgVenta.Name = "dgVenta";
             this.dgVenta.RowTemplate.Height = 25;
-            this.dgVenta.Size = new System.Drawing.Size(1027, 165);
+            this.dgVenta.Size = new System.Drawing.Size(1039, 165);
             this.dgVenta.TabIndex = 9;
             // 
             // dgCompra
@@ -86,7 +86,7 @@
             this.dgCompra.Location = new System.Drawing.Point(12, 34);
             this.dgCompra.Name = "dgCompra";
             this.dgCompra.RowTemplate.Height = 25;
-            this.dgCompra.Size = new System.Drawing.Size(1027, 165);
+            this.dgCompra.Size = new System.Drawing.Size(1039, 165);
             this.dgCompra.TabIndex = 6;
             // 
             // label1
@@ -104,7 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1100, 750);
+            this.ClientSize = new System.Drawing.Size(1075, 650);
             this.Controls.Add(this.dgProductos);
             this.Controls.Add(this.dgVenta);
             this.Controls.Add(this.dgCompra);
@@ -116,6 +116,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Dashboard";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
@@ -133,7 +134,7 @@
         private DataGridView dataGridView2;
         private PictureBox pictureBox4;
         private PictureBox pictureBox3;
-        private PictureBox pictureBox2;
+        private PictureBox navProducto;
         private PictureBox pictureBox1;
         private DataGridView dtCompra;
         private DataGridView dtVenta;
