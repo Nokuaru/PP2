@@ -11,12 +11,14 @@ namespace Login
         public formLogin()
         {
             InitializeComponent();
+          
         }
 
         string cc = @"Data Source = PREMIERE; Initial Catalog = Grupo42; Integrated Security = True";
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        public void btnLogin_Click(object sender, EventArgs e)
         {
+            
             if (txtUsuario.Text=="" & txtPassword.Text == "")
             {
                 lblUsuario.Text="Ingrese un usuario";
@@ -26,7 +28,7 @@ namespace Login
             else if(txtPassword.Text == "")
             {
                 lblPassword.Text = "Ingrese la contraseña";
-            }
+             }
 
             else if (txtUsuario.Text == "")
             {
@@ -50,8 +52,9 @@ namespace Login
                     if (contar == 1)
                     {
                         this.Hide();
-                        Dashboard frm = new Dashboard();
-                        frm.Show();
+
+                       Home home = new Home ();
+                       home.Show();
                     }
                     else
                     {
@@ -68,15 +71,13 @@ namespace Login
         }
 
 
-
-
-
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        private void txtUsuario_MouseClick(object sender, MouseEventArgs e)
         {
             lblUsuario.Text = "";
+
         }
 
-        private void txtPassword_TextChanged(object sender, EventArgs e)
+        private void txtPassword_MouseClick(object sender, MouseEventArgs e)
         {
             lblPassword.Text = "";
         }

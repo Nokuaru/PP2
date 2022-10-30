@@ -29,5 +29,12 @@ namespace Login.Data
                 return null;
             }
         }
+
+        public void CargaDashboard()
+        {
+
+        }
     }
+
+
 }

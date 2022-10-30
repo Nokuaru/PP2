@@ -59,7 +59,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(244, 27);
             this.txtUsuario.TabIndex = 3;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtUsuario.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtUsuario_MouseClick);
             // 
             // txtPassword
             // 
@@ -69,7 +69,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(244, 27);
             this.txtPassword.TabIndex = 4;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPassword_MouseClick);
             // 
             // panel1
             // 
@@ -116,9 +116,8 @@
             this.lblUsuario.ForeColor = System.Drawing.Color.Red;
             this.lblUsuario.Location = new System.Drawing.Point(96, 294);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(129, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(0, 13);
             this.lblUsuario.TabIndex = 7;
-            this.lblUsuario.Text = "(queda para no perderlo)";
             // 
             // lblPassword
             // 
@@ -127,9 +126,8 @@
             this.lblPassword.ForeColor = System.Drawing.Color.Red;
             this.lblPassword.Location = new System.Drawing.Point(96, 370);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(129, 13);
+            this.lblPassword.Size = new System.Drawing.Size(0, 13);
             this.lblPassword.TabIndex = 8;
-            this.lblPassword.Text = "(queda para no perderlo)";
             // 
             // label1
             // 
@@ -139,6 +137,7 @@
             this.label1.Size = new System.Drawing.Size(193, 19);
             this.label1.TabIndex = 9;
             this.label1.Text = "Usr Nokuaru Pass 123456";
+            this.label1.Visible = false;
             // 
             // formLogin
             // 
