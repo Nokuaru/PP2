@@ -21,21 +21,14 @@ namespace Login
 
         private void Productos_Load(object sender, EventArgs e)
         {
-
+            cargarCombobox();
             recargarProductos();
 
         }
 
-        public void recargarProductos()
+        public void cargarCombobox()
         {
             Conexion con = new Conexion();
-            string sql = "SELECT * FROM V_Producto_Productos;";
-            SqlCommand cmd = new SqlCommand(sql, con.Conectar());
-            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-            DataTable dtProducto = new DataTable();
-            dtProducto.Load(dr);
-            dgProductos.DataSource = dtProducto.DefaultView;
-
             string sqlProveedor = "SELECT RazonSocial from Proveedor";
             SqlCommand cmdProveedor = new SqlCommand(sqlProveedor, con.Conectar());
             using (SqlDataReader saReader = cmdProveedor.ExecuteReader())
@@ -61,13 +54,26 @@ namespace Login
             con.Desconectar();
         }
 
+
+        public void recargarProductos()
+        {
+            Conexion con = new Conexion();
+            string sql = "SELECT * FROM V_Producto_Productos;";
+            SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            DataTable dtProducto = new DataTable();
+            dtProducto.Load(dr);
+            dgProductos.DataSource = dtProducto.DefaultView;
+            con.Desconectar();
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             
             var categoria = getIDCategoria();
             var proveedor = getIDProveedor();
-            MessageBox.Show(categoria);
-            MessageBox.Show(proveedor);
+            //MessageBox.Show(categoria);
+            //MessageBox.Show(proveedor);
             Conexion con = new Conexion();
             string nombre = txtNombre.Text;
             string cantidad = txtCantidad.Text;
