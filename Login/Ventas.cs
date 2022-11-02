@@ -24,6 +24,9 @@ namespace Login
             //CargaComboProductos();
             String consultaCombProducto = "SELECT idCategoria,DescripcionCatProd FROM [CategoriaProducto] ORDER BY DescripcionCatProd DESC";
             CargaCombos(combProducto, consultaCombProducto, "idCategoria", "DescripcionCatProd");
+            //bloquea el combo producto
+            combNombreProducto.Enabled=false;
+            
         }
 
 
@@ -40,8 +43,8 @@ namespace Login
         private void CargaCombos(ComboBox nombreCombobox, string consulta, string idDeConsulta, string valorParaMostrarDeConsulta)
         {
 
-            nombreCombobox.Items.Clear();
             nombreCombobox.DataSource = null;
+            nombreCombobox.Items.Clear();
 
             try
             {
@@ -111,6 +114,28 @@ namespace Login
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void combProducto_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            try
+            {
+                combNombreProducto.Enabled = true;
+                int iDCategoria = int.Parse(combProducto.SelectedValue.ToString());
+                string consulta = "SELECT idProducto,Nombre from Producto WHERE idCategoria = '" + iDCategoria + "'";
+                CargaCombos(combNombreProducto, consulta, "idProducto", "Nombre");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error en cmbProducto_SelectionChangeMomitted");
+                throw;
+            }
+        }
+
+        private void combNombreProducto_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            txtNumericBox.Enabled = true;
         }
     }
 }
