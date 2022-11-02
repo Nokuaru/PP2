@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Login.Data.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,6 +43,12 @@ namespace Login
         {
             Productos productos = new Productos();
             nav(productos, pnlContent);
+        }
+
+        private void navVenta_Click(object sender, EventArgs e)
+        {
+            Ventas ventas = new Ventas();
+            nav(ventas, pnlContent);
         }
     }
 }
