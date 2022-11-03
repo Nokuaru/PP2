@@ -21,12 +21,15 @@ namespace Login
 
         private void Ventas_Load(object sender, EventArgs e)
         {
-            //CargaComboProductos();
+            //CargaComboProductos
             String consultaCombProducto = "SELECT idCategoria,DescripcionCatProd FROM [CategoriaProducto] ORDER BY DescripcionCatProd DESC";
             CargaCombos(combProducto, consultaCombProducto, "idCategoria", "DescripcionCatProd");
             //bloquea el combo producto
             combNombreProducto.Enabled=false;
-            
+            //CargaComboCliente
+            string consutaComboCliente = "SELECT idCliente,Nombre FROM Cliente ORDER BY Nombre DESC";
+            CargaCombos(combCliente, consutaComboCliente, "idCliente", "Nombre");
+            //String consutaComboTComprobante = "SELECT ";
         }
 
 
@@ -65,6 +68,19 @@ namespace Login
                 throw;
             }
 
+
+        }
+
+        private void CargaDataGridDetalle()
+        {
+            string tipoProducto, nombreProducto, cantidad;
+
+            tipoProducto = combNombreProducto.Text;
+            nombreProducto = combProducto.SelectedValue.ToString();
+            cantidad = txtNumericBox.Value.ToString();
+            
+            string[] filaParaAgregar = { tipoProducto, nombreProducto, cantidad };
+            dataGridDetalleVenta.Rows.Add(filaParaAgregar);
 
         }
         private void CargaComboProductos()
@@ -136,6 +152,27 @@ namespace Login
         private void combNombreProducto_SelectionChangeCommitted(object sender, EventArgs e)
         {
             txtNumericBox.Enabled = true;
+        }
+
+        private void btnAgregarAVenta_Click(object sender, EventArgs e)
+        {
+            CargaDataGridDetalle();
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevaVenta_Click(object sender, EventArgs e)
+        {
+            tableLayoutNuevaFactura.Enabled = true;
+
         }
     }
 }
