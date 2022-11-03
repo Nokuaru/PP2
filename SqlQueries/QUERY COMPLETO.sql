@@ -45,6 +45,14 @@ CREATE TABLE EstadoCliente (
 	idEstadoCliente TINYINT IDENTITY(1,1) PRIMARY KEY,
 	DescripcionEstadoCliente varchar(20)
 )
+
+-----------------------------------------------------------------------------------------------------
+-- CREA TABLA TipoComprobante
+DROP TABLE IF EXISTS TipoComprobante
+CREATE TABLE TipoComprobante (
+	idTipoComprobante TINYINT IDENTITY PRIMARY KEY NOT NULL,
+	DescripcionTipoComprobante varchar(20) NOT NULL
+)
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA USUARIO
 DROP TABLE IF EXISTS Usuario
@@ -130,6 +138,7 @@ CREATE TABLE DetalleCompra (
 ) 
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA VENTA
+/*
 DROP TABLE IF EXISTS Venta
 CREATE TABLE Venta (
 	idVenta INT PRIMARY KEY IDENTITY (1000,1) NOT NULL,
@@ -146,6 +155,26 @@ CREATE TABLE Venta (
 	idFormaPago tinyint not null,
 		CONSTRAINT fk_formaPago FOREIGN KEY (idFormaPago) REFERENCES FormaPago (idFormaPago)
 )
+*/
+-- CREA TABLA VENTA
+DROP TABLE IF EXISTS Venta
+CREATE TABLE Venta (
+	idVenta INT PRIMARY KEY IDENTITY (1000,1) NOT NULL,
+	idCliente SMALLINT NOT NULL,
+		CONSTRAINT fk_VentasCliente FOREIGN KEY (idCliente) REFERENCES Cliente (idCliente),
+	idUsuario SMALLINT NOT NULL DEFAULT 0,
+		Constraint fk_VentasUsuario FOREIGN KEY (idUsuario) REFERENCES Usuario (idUsuario),
+	idTipoComprobante TINYINT NULL,
+		Constraint fk_VentasTipoComprobante FOREIGN KEY (idTipoComprobante) REFERENCES TipoComprobante (idTipoComprobante),
+	NumeroComprobante INT NULL,
+	FechaVenta DATE NOT NULL DEFAULT GETDATE(),
+	Total DECIMAL(9,2),
+	idEstadoVenta tinyint not null,
+		CONSTRAINT fk_VentasEstadoVenta FOREIGN KEY (idEstadoVenta) REFERENCES EstadoVenta (idEstadoVenta),
+	idFormaPago tinyint not null,
+		CONSTRAINT fk_formaPago FOREIGN KEY (idFormaPago) REFERENCES FormaPago (idFormaPago)
+)
+
 -----------------------------------------------------------------------------------------------------
 -- CREA TABLA DETALLE VENTA
 DROP TABLE IF EXISTS DetalleVenta
