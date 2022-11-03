@@ -277,6 +277,7 @@
             this.navVenta.Size = new System.Drawing.Size(103, 40);
             this.navVenta.TabIndex = 2;
             this.navVenta.TabStop = false;
+            this.navVenta.Click += new System.EventHandler(this.navVenta_Click);
             // 
             // label1
             // 
