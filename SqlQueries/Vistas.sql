@@ -77,8 +77,9 @@ GO
 CREATE VIEW [dbo].[V_Venta_ListadoVentas]
 AS
 SELECT        dbo.Venta.idVenta, CONVERT(varchar, dbo.Venta.FechaVenta, 103) AS Fecha, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.EstadoVenta.DescripcionEstadoVenta AS Estado, dbo.Venta.Total, 
-                         dbo.Venta.TipoComprobante
+                         dbo.TipoComprobante.DescripcionTipoComprobante AS [Tipo de comprobante]
 FROM            dbo.Venta INNER JOIN
                          dbo.Cliente ON dbo.Venta.idCliente = dbo.Cliente.idCliente INNER JOIN
-                         dbo.EstadoVenta ON dbo.Venta.idEstadoVenta = dbo.EstadoVenta.idEstadoVenta
+                         dbo.EstadoVenta ON dbo.Venta.idEstadoVenta = dbo.EstadoVenta.idEstadoVenta INNER JOIN
+						 dbo.TipoComprobante ON dbo.Venta.idTipoComprobante = dbo.TipoComprobante.idTipoComprobante  
 GO
