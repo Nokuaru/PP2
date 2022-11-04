@@ -104,7 +104,7 @@ CREATE TABLE Producto (
 		CONSTRAINT fk_ProductoCategoria FOREIGN KEY (idCategoria) REFERENCES CategoriaProducto (idCategoria),
 	idProveedor SMALLINT NOT NULL,
 		CONSTRAINT fk_ProductoProveedor FOREIGN KEY (idProveedor) REFERENCES Proveedor (idProveedor),
-	Nombre VARCHAR (20) NOT NULL,
+	Nombre VARCHAR (75) NOT NULL,
 	Cantidad SMALLINT NOT NULL,
 	PrecioUnitarioCompra DECIMAL (9,2) NOT NULL,
 	PrecioUnitarioVenta DECIMAL (9,2) NOT NULL
@@ -204,6 +204,12 @@ INSERT INTO EstadoVenta
 			VALUES ('Pago'),('Impago')
 INSERT INTO EstadoCliente
 			VALUES ('Al día'),('Deudor'),('Requiere sicario')
+			
+INSERT INTO TipoComprobante (DescripcionTipoComprobante)
+VALUES ('FACTURA A'), ('FACTURA B'), ('NOTA DE DEBITO'), ('NOTA DE CREDITO')
+
+
+			
 INSERT INTO Usuario
 			VALUES	('1','Facundo','Tomas','32478178','nokuaru@gmail.com','Nokuaru','123456','1121739785'),
 					('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321')
@@ -221,8 +227,8 @@ INSERT INTO Producto (idCategoria,idProveedor,Nombre,Cantidad,PrecioUnitarioVent
 INSERT INTO Compra (idUsuario,idEstadoCompra,TipoComprobante,NumeroComprobante,Total,FormaPago)
 			VALUES	('1000','1','A','000021','255','1'),
 					('1001','2','B','000022','384','2')
-INSERT INTO Venta (idCliente, idUsuario, TipoComprobante,NumeroComprobante,FechaVenta,Total,idEstadoVenta,idFormaPago)
-			VALUES ('1000','1001','A','0000028',DEFAULT,'453','1','1')
+INSERT INTO Venta (idCliente, idUsuario, idTipoComprobante,NumeroComprobante,FechaVenta,Total,idEstadoVenta,idFormaPago)
+			VALUES ('1000','1001',1,'0000028',DEFAULT,'453','1','1')
 INSERT INTO DetalleVenta (idVenta,idProducto,Cantidad)
 			VALUES	('1000','1000','20'),
 					('1000','1001','9')
