@@ -209,26 +209,30 @@ INSERT INTO Usuario
 					('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321')
 INSERT INTO Proveedor (Cuit,RazonSocial,Direccion,Mail,Telefono) 
 			VALUES	('22222222222','McDonalds','General Paz 5445' ,'a@a.com','11111222'),
-					('11111111111','BurgerKing','Amenabar 5445' ,'b@b.com','32323232'),
-					('33333333333','PumperNic','Belgrano 5445' ,'c@c.com','42424242')
+				('11111111111','BurgerKing','Amenabar 5445' ,'b@b.com','32323232'),
+				('33333333333','PumperNic','Belgrano 5445' ,'c@c.com','42424242')
 INSERT INTO Cliente
 			VALUES	('1','Jorge','Capitanich','7894561', 'jorgito@gmail.com','1513254857',DEFAULT,DEFAULT),
-					('2','Alberto','Fernández','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT)
+				('2','Alberto','Fernández','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT)
 INSERT INTO Producto (idCategoria,idProveedor,Nombre,Cantidad,PrecioUnitarioVenta,PrecioUnitarioCompra)
 			VALUES	('1','1001','Coca Cola 500ml','50','90.25','135'),
-					('5','1002','Empanada JyQ','23','73.55','155')
-
+				('5','1002','Empanada JyQ','23','73.55','155')
 INSERT INTO Compra (idUsuario,idEstadoCompra,TipoComprobante,NumeroComprobante,Total,FormaPago)
 			VALUES	('1000','1','A','000021','255','1'),
 					('1001','2','B','000022','384','2')
-INSERT INTO Venta (idCliente, idUsuario, TipoComprobante,NumeroComprobante,FechaVenta,Total,idEstadoVenta,idFormaPago)
-			VALUES ('1000','1001','A','0000028',DEFAULT,'453','1','1')
+INSERT INTO Venta (idCliente, idUsuario, idTipoComprobante,NumeroComprobante,FechaVenta,Total,idEstadoVenta,idFormaPago)
+			VALUES  ('1000','1001',1,'0000028',DEFAULT,'453','1','1')
 INSERT INTO DetalleVenta (idVenta,idProducto,Cantidad)
 			VALUES	('1000','1000','20'),
-					('1000','1001','9')
+				('1000','1001','9')
 INSERT INTO DetalleCompra (idCompra,idProducto,Cantidad)
-			VALUES	('1000','1000','20'),
-					('1000','1001','15'),
-					('1001','1000','7'),
-					('1001','1000','14')
+			VALUES	('1000','1000','20'), 
+				('1000','1001','15'), 
+				('1001','1000','7'), 
+				('1001','1000','14')
+INSERT INTO TipoComprobante (DescripcionTipoComprobante)
+			VALUES  ('FACTURA A'), 
+				('FACTURA B'), 
+				('NOTA DE DEBITO'), 
+				('NOTA DE CREDITO')
 		
