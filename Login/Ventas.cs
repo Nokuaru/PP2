@@ -1,4 +1,5 @@
 ﻿using Login.Data;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -111,6 +112,69 @@ namespace Login
 
         }
 
+        private void actualizaEstadoFactura(int idEstadoFactura)
+        {
+            try
+            {
+                Conexion con = new Conexion();
+                string sql = "UPDATE VENTA SET idEstadoVenta = " + idEstadoFactura + " WHERE idVenta = " + getIdVenta();
+                SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+                cmd.ExecuteNonQuery();
+                con.Desconectar();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al actualizar estado de factura \n" + ex);
+                throw;
+            }
+
+        }
+        private void actualizaEstadoFactura(int idEstadoFactura, int idFactura)
+        {
+
+            try
+            {
+                Conexion con = new Conexion();
+                string sql = "UPDATE VENTA SET idEstadoVenta =" + idEstadoFactura + " WHERE idVenta" + idFactura;
+                SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+                cmd.ExecuteNonQuery();
+                con.Desconectar();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al actualizar estado de factura \n" + ex);
+                throw;
+            }
+
+        }
+
+        private string getIdVenta()
+        {
+            string sql = "SELECT MAX(idVenta) FROM Venta";
+            string returnValue = "";
+            try
+            {
+                Conexion con = new Conexion();
+                SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+                DataTable resultado = new DataTable();
+                using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    resultado.Load(reader);
+                    returnValue = resultado.Rows[0][0].ToString();
+                    con.Desconectar();
+
+                    return returnValue;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al obtener el id de factura.\n" + ex);
+                throw;
+            }
+
+        }
+
         private void CargaDataGridDetalle()
         {
             string tipoProducto, nombreProducto, cantidad, idTipoProducto, subtotal;
@@ -120,8 +184,9 @@ namespace Login
             nombreProducto = combProducto.Text.ToString();
             cantidad = txtNumericBox.Value.ToString();
             subtotal = txtSubtotalLinea.Text;
-            string[] filaParaAgregar = { tipoProducto, nombreProducto, cantidad, subtotal.ToString(),subtotal };
-            dataGridDetalleVenta.Rows.Add(filaParaAgregar);
+
+            string[] filaParaAgregar = { tipoProducto, nombreProducto,idTipoProducto, cantidad, subtotal.ToString(),subtotal };
+            dataGridDetalleVenta.Rows.Add(filaParaAgregar);            
 
         }
         private void CargaComboProductos()
@@ -143,15 +208,7 @@ namespace Login
                 combProducto.ValueMember = "idCategoria";
                 combProducto.DisplayMember = "DescripcionCatProd";
                 combProducto.DataSource = dt;
-                /*
-                using (SqlDataReader saReader = cmd.ExecuteReader())
-                {
-                    while (saReader.Read())
-                    {
-                        string name = saReader.GetString(0);
-                        combProveedor.Items.Add(name);
-                    }
-                }*/
+
                 con.Desconectar();
             }
             catch(SqlException ex)
@@ -215,7 +272,8 @@ namespace Login
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
-            
+            btnCancelarVenta.Enabled = true;
+
             string idCliente, idFormaPago, idTipoComprobante, numeroComprobante, consCombProducto;
             idCliente= combCliente.SelectedValue.ToString();
             idFormaPago = combFormaPago.SelectedValue.ToString();
@@ -260,6 +318,59 @@ namespace Login
             txtSubtotalLinea.Enabled = true;
             ActualizaSubtotalLinea(getPrecioUnitario());
             
+        }
+
+        private void btnFinalizarVenta_Click(object sender, EventArgs e)
+        {
+            string idVenta = getIdVenta();
+            string acumulaQry = "";
+
+            int filas = dataGridDetalleVenta.RowCount;
+            if (filas >0) {
+                string[] qry = new string[filas];   
+
+                    if (filas==1)
+                    {
+                        qry[0] = "(" + idVenta + "," + dataGridDetalleVenta[2,1].Value.ToString()+"," + dataGridDetalleVenta[3, 1].Value.ToString()+")";
+                    }
+                    else
+                    {
+                        for (int i = 0; i < filas; i++)
+                        {
+                            qry[i] = "(" + idVenta + "," + dataGridDetalleVenta[2, i].Value.ToString() + "," + dataGridDetalleVenta[3, i].Value.ToString() + ")";
+                            if (i<filas-1)
+                            {
+                                qry[i] += ",";
+                            }
+                        }
+                    }
+
+                acumulaQry = "INSERT INTO DetalleVenta (idVenta,idProducto,Cantidad) VALUES ";
+                for (int i = 0; i < qry.Length; i++)
+                {
+                    acumulaQry+=qry[i];
+                }
+
+                try
+                {
+
+                    Conexion con = new Conexion();
+                    SqlCommand cmd = new SqlCommand(acumulaQry, con.Conectar());
+                    cmd.ExecuteNonQuery();
+                    con.Desconectar();
+                    actualizaEstadoFactura(1);
+                    MessageBox.Show("Factura generada con éxito.");
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Error al insertar detalles de factura \n" + ex);
+                    throw;
+                }
+
+            }
+            
+
+
         }
     }
 }

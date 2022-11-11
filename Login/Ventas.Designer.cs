@@ -39,6 +39,7 @@
             this.dataGridDetalleVenta = new System.Windows.Forms.DataGridView();
             this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,7 +55,7 @@
             this.txtNumeroComprobante = new System.Windows.Forms.TextBox();
             this.btnNuevaVenta = new System.Windows.Forms.Button();
             this.btnCancelarVenta = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFinalizarVenta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -129,9 +130,9 @@
             // 
             // btnAgregarAVenta
             // 
-            this.btnAgregarAVenta.Location = new System.Drawing.Point(753, 393);
+            this.btnAgregarAVenta.Location = new System.Drawing.Point(753, 236);
             this.btnAgregarAVenta.Name = "btnAgregarAVenta";
-            this.btnAgregarAVenta.Size = new System.Drawing.Size(107, 23);
+            this.btnAgregarAVenta.Size = new System.Drawing.Size(136, 27);
             this.btnAgregarAVenta.TabIndex = 7;
             this.btnAgregarAVenta.Text = "Agregar a pedido";
             this.btnAgregarAVenta.UseVisualStyleBackColor = true;
@@ -146,6 +147,7 @@
             this.dataGridDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TipoProducto,
             this.NombreProducto,
+            this.idProducto,
             this.Cantidad,
             this.Subtotal});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridDetalleVenta, 4);
@@ -167,6 +169,12 @@
             this.NombreProducto.HeaderText = "Nombre del producto";
             this.NombreProducto.Name = "NombreProducto";
             this.NombreProducto.ReadOnly = true;
+            // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "idProducto";
+            this.idProducto.Name = "idProducto";
+            this.idProducto.ReadOnly = true;
             // 
             // Cantidad
             // 
@@ -190,14 +198,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.Controls.Add(this.txtSubtotalLinea, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridDetalleVenta, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNumericBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.combNombreProducto, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.combProducto, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridDetalleVenta, 3, 2);
             this.tableLayoutPanel1.Enabled = false;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 372);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 213);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -332,14 +340,15 @@
             this.btnCancelarVenta.UseVisualStyleBackColor = true;
             this.btnCancelarVenta.Click += new System.EventHandler(this.btnCancelarVenta_Click);
             // 
-            // button1
+            // btnFinalizarVenta
             // 
-            this.button1.Location = new System.Drawing.Point(914, 395);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Finalizar Venta";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFinalizarVenta.Location = new System.Drawing.Point(914, 236);
+            this.btnFinalizarVenta.Name = "btnFinalizarVenta";
+            this.btnFinalizarVenta.Size = new System.Drawing.Size(136, 27);
+            this.btnFinalizarVenta.TabIndex = 19;
+            this.btnFinalizarVenta.Text = "Finalizar Venta";
+            this.btnFinalizarVenta.UseVisualStyleBackColor = true;
+            this.btnFinalizarVenta.Click += new System.EventHandler(this.btnFinalizarVenta_Click);
             // 
             // Ventas
             // 
@@ -347,7 +356,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 711);
             this.Controls.Add(this.btnAgregarAVenta);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnFinalizarVenta);
             this.Controls.Add(this.btnCancelarVenta);
             this.Controls.Add(this.btnNuevaVenta);
             this.Controls.Add(this.tableLayoutNuevaFactura);
@@ -379,9 +388,6 @@
         private Label label4;
         private Button btnAgregarAVenta;
         private DataGridView dataGridDetalleVenta;
-        private DataGridViewTextBoxColumn TipoProducto;
-        private DataGridViewTextBoxColumn NombreProducto;
-        private DataGridViewTextBoxColumn Cantidad;
         private TableLayoutPanel tableLayoutPanel1;
         private ComboBox combCliente;
         private ComboBox combTipoComprobante;
@@ -394,8 +400,12 @@
         private Button btnCancelarVenta;
         private TextBox txtNumeroComprobante;
         private Label label8;
-        private Button button1;
+        private Button btnFinalizarVenta;
         private TextBox txtSubtotalLinea;
+        private DataGridViewTextBoxColumn TipoProducto;
+        private DataGridViewTextBoxColumn NombreProducto;
+        private DataGridViewTextBoxColumn idProducto;
+        private DataGridViewTextBoxColumn Cantidad;
         private DataGridViewTextBoxColumn Subtotal;
     }
 }
