@@ -39,8 +39,11 @@
             this.dataGridDetalleVenta = new System.Windows.Forms.DataGridView();
             this.TipoProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtSubtotalLinea = new System.Windows.Forms.TextBox();
             this.combCliente = new System.Windows.Forms.ComboBox();
             this.combTipoComprobante = new System.Windows.Forms.ComboBox();
             this.combFormaPago = new System.Windows.Forms.ComboBox();
@@ -48,8 +51,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutNuevaFactura = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtNumeroComprobante = new System.Windows.Forms.TextBox();
             this.btnNuevaVenta = new System.Windows.Forms.Button();
             this.btnCancelarVenta = new System.Windows.Forms.Button();
+            this.btnFinalizarVenta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -74,7 +80,6 @@
             this.combProducto.Size = new System.Drawing.Size(121, 23);
             this.combProducto.TabIndex = 1;
             this.combProducto.SelectionChangeCommitted += new System.EventHandler(this.combProducto_SelectionChangeCommitted);
-            this.combProducto.SelectedValueChanged += new System.EventHandler(this.combProducto_SelectedValueChanged);
             // 
             // label2
             // 
@@ -90,16 +95,16 @@
             // 
             this.combNombreProducto.Enabled = false;
             this.combNombreProducto.FormattingEnabled = true;
-            this.combNombreProducto.Location = new System.Drawing.Point(177, 23);
+            this.combNombreProducto.Location = new System.Drawing.Point(153, 23);
             this.combNombreProducto.Name = "combNombreProducto";
-            this.combNombreProducto.Size = new System.Drawing.Size(168, 23);
+            this.combNombreProducto.Size = new System.Drawing.Size(144, 23);
             this.combNombreProducto.TabIndex = 3;
             this.combNombreProducto.SelectionChangeCommitted += new System.EventHandler(this.combNombreProducto_SelectionChangeCommitted);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(177, 0);
+            this.label3.Location = new System.Drawing.Point(153, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 15);
             this.label3.TabIndex = 4;
@@ -108,15 +113,16 @@
             // txtNumericBox
             // 
             this.txtNumericBox.Enabled = false;
-            this.txtNumericBox.Location = new System.Drawing.Point(351, 23);
+            this.txtNumericBox.Location = new System.Drawing.Point(303, 23);
             this.txtNumericBox.Name = "txtNumericBox";
             this.txtNumericBox.Size = new System.Drawing.Size(55, 23);
             this.txtNumericBox.TabIndex = 5;
+            this.txtNumericBox.ValueChanged += new System.EventHandler(this.txtNumericBox_ValueChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(351, 0);
+            this.label4.Location = new System.Drawing.Point(303, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 6;
@@ -124,9 +130,9 @@
             // 
             // btnAgregarAVenta
             // 
-            this.btnAgregarAVenta.Location = new System.Drawing.Point(525, 23);
+            this.btnAgregarAVenta.Location = new System.Drawing.Point(753, 236);
             this.btnAgregarAVenta.Name = "btnAgregarAVenta";
-            this.btnAgregarAVenta.Size = new System.Drawing.Size(107, 23);
+            this.btnAgregarAVenta.Size = new System.Drawing.Size(136, 27);
             this.btnAgregarAVenta.TabIndex = 7;
             this.btnAgregarAVenta.Text = "Agregar a pedido";
             this.btnAgregarAVenta.UseVisualStyleBackColor = true;
@@ -134,14 +140,20 @@
             // 
             // dataGridDetalleVenta
             // 
+            this.dataGridDetalleVenta.AllowUserToAddRows = false;
+            this.dataGridDetalleVenta.AllowUserToDeleteRows = false;
+            this.dataGridDetalleVenta.AllowUserToOrderColumns = true;
             this.dataGridDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TipoProducto,
             this.NombreProducto,
-            this.Cantidad});
+            this.idProducto,
+            this.Cantidad,
+            this.Subtotal});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridDetalleVenta, 4);
             this.dataGridDetalleVenta.Location = new System.Drawing.Point(3, 63);
             this.dataGridDetalleVenta.Name = "dataGridDetalleVenta";
+            this.dataGridDetalleVenta.ReadOnly = true;
             this.dataGridDetalleVenta.RowTemplate.Height = 25;
             this.dataGridDetalleVenta.Size = new System.Drawing.Size(588, 201);
             this.dataGridDetalleVenta.TabIndex = 8;
@@ -158,61 +170,86 @@
             this.NombreProducto.Name = "NombreProducto";
             this.NombreProducto.ReadOnly = true;
             // 
+            // idProducto
+            // 
+            this.idProducto.HeaderText = "idProducto";
+            this.idProducto.Name = "idProducto";
+            this.idProducto.ReadOnly = true;
+            // 
             // Cantidad
             // 
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
             // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoScroll = true;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.btnAgregarAVenta, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtSubtotalLinea, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridDetalleVenta, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtNumericBox, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.combNombreProducto, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.combProducto, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridDetalleVenta, 3, 2);
             this.tableLayoutPanel1.Enabled = false;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 372);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 213);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(698, 312);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 312);
             this.tableLayoutPanel1.TabIndex = 9;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
+            // txtSubtotalLinea
+            // 
+            this.txtSubtotalLinea.Enabled = false;
+            this.txtSubtotalLinea.Location = new System.Drawing.Point(453, 23);
+            this.txtSubtotalLinea.Name = "txtSubtotalLinea";
+            this.txtSubtotalLinea.Size = new System.Drawing.Size(100, 23);
+            this.txtSubtotalLinea.TabIndex = 20;
+            this.txtSubtotalLinea.Text = "Subtotal";
+            // 
             // combCliente
             // 
+            this.combCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combCliente.FormattingEnabled = true;
             this.combCliente.Location = new System.Drawing.Point(3, 24);
             this.combCliente.Name = "combCliente";
-            this.combCliente.Size = new System.Drawing.Size(141, 23);
+            this.combCliente.Size = new System.Drawing.Size(126, 23);
             this.combCliente.TabIndex = 10;
             // 
             // combTipoComprobante
             // 
+            this.combTipoComprobante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combTipoComprobante.FormattingEnabled = true;
-            this.combTipoComprobante.Location = new System.Drawing.Point(150, 24);
+            this.combTipoComprobante.Location = new System.Drawing.Point(166, 24);
             this.combTipoComprobante.Name = "combTipoComprobante";
-            this.combTipoComprobante.Size = new System.Drawing.Size(141, 23);
+            this.combTipoComprobante.Size = new System.Drawing.Size(126, 23);
             this.combTipoComprobante.TabIndex = 11;
             // 
             // combFormaPago
             // 
+            this.combFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combFormaPago.FormattingEnabled = true;
-            this.combFormaPago.Location = new System.Drawing.Point(297, 24);
+            this.combFormaPago.Location = new System.Drawing.Point(329, 24);
             this.combFormaPago.Name = "combFormaPago";
-            this.combFormaPago.Size = new System.Drawing.Size(111, 23);
+            this.combFormaPago.Size = new System.Drawing.Size(110, 23);
             this.combFormaPago.TabIndex = 12;
             // 
             // label5
@@ -228,7 +265,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(150, 0);
+            this.label6.Location = new System.Drawing.Point(166, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(122, 15);
             this.label6.TabIndex = 14;
@@ -237,7 +274,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(297, 0);
+            this.label7.Location = new System.Drawing.Point(329, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 15);
             this.label7.TabIndex = 15;
@@ -245,28 +282,46 @@
             // 
             // tableLayoutNuevaFactura
             // 
-            this.tableLayoutNuevaFactura.ColumnCount = 3;
-            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 116F));
+            this.tableLayoutNuevaFactura.ColumnCount = 4;
+            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutNuevaFactura.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutNuevaFactura.Controls.Add(this.label8, 3, 0);
+            this.tableLayoutNuevaFactura.Controls.Add(this.txtNumeroComprobante, 3, 1);
             this.tableLayoutNuevaFactura.Controls.Add(this.combCliente, 0, 1);
             this.tableLayoutNuevaFactura.Controls.Add(this.combTipoComprobante, 1, 1);
             this.tableLayoutNuevaFactura.Controls.Add(this.label6, 1, 0);
             this.tableLayoutNuevaFactura.Controls.Add(this.combFormaPago, 2, 1);
             this.tableLayoutNuevaFactura.Controls.Add(this.label5, 0, 0);
             this.tableLayoutNuevaFactura.Controls.Add(this.label7, 2, 0);
-            this.tableLayoutNuevaFactura.Enabled = false;
             this.tableLayoutNuevaFactura.Location = new System.Drawing.Point(28, 93);
             this.tableLayoutNuevaFactura.Name = "tableLayoutNuevaFactura";
             this.tableLayoutNuevaFactura.RowCount = 2;
             this.tableLayoutNuevaFactura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.59649F));
             this.tableLayoutNuevaFactura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.40351F));
-            this.tableLayoutNuevaFactura.Size = new System.Drawing.Size(411, 57);
+            this.tableLayoutNuevaFactura.Size = new System.Drawing.Size(655, 57);
             this.tableLayoutNuevaFactura.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(492, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(126, 15);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Numero comprobante";
+            // 
+            // txtNumeroComprobante
+            // 
+            this.txtNumeroComprobante.Location = new System.Drawing.Point(492, 24);
+            this.txtNumeroComprobante.Name = "txtNumeroComprobante";
+            this.txtNumeroComprobante.Size = new System.Drawing.Size(106, 23);
+            this.txtNumeroComprobante.TabIndex = 19;
             // 
             // btnNuevaVenta
             // 
-            this.btnNuevaVenta.Location = new System.Drawing.Point(28, 45);
+            this.btnNuevaVenta.Location = new System.Drawing.Point(753, 113);
             this.btnNuevaVenta.Name = "btnNuevaVenta";
             this.btnNuevaVenta.Size = new System.Drawing.Size(136, 29);
             this.btnNuevaVenta.TabIndex = 17;
@@ -276,18 +331,32 @@
             // 
             // btnCancelarVenta
             // 
-            this.btnCancelarVenta.Location = new System.Drawing.Point(449, 45);
+            this.btnCancelarVenta.Enabled = false;
+            this.btnCancelarVenta.Location = new System.Drawing.Point(914, 113);
             this.btnCancelarVenta.Name = "btnCancelarVenta";
             this.btnCancelarVenta.Size = new System.Drawing.Size(136, 29);
             this.btnCancelarVenta.TabIndex = 18;
             this.btnCancelarVenta.Text = "Cancelar Venta";
             this.btnCancelarVenta.UseVisualStyleBackColor = true;
+            this.btnCancelarVenta.Click += new System.EventHandler(this.btnCancelarVenta_Click);
+            // 
+            // btnFinalizarVenta
+            // 
+            this.btnFinalizarVenta.Location = new System.Drawing.Point(914, 236);
+            this.btnFinalizarVenta.Name = "btnFinalizarVenta";
+            this.btnFinalizarVenta.Size = new System.Drawing.Size(136, 27);
+            this.btnFinalizarVenta.TabIndex = 19;
+            this.btnFinalizarVenta.Text = "Finalizar Venta";
+            this.btnFinalizarVenta.UseVisualStyleBackColor = true;
+            this.btnFinalizarVenta.Click += new System.EventHandler(this.btnFinalizarVenta_Click);
             // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 711);
+            this.Controls.Add(this.btnAgregarAVenta);
+            this.Controls.Add(this.btnFinalizarVenta);
             this.Controls.Add(this.btnCancelarVenta);
             this.Controls.Add(this.btnNuevaVenta);
             this.Controls.Add(this.tableLayoutNuevaFactura);
@@ -319,9 +388,6 @@
         private Label label4;
         private Button btnAgregarAVenta;
         private DataGridView dataGridDetalleVenta;
-        private DataGridViewTextBoxColumn TipoProducto;
-        private DataGridViewTextBoxColumn NombreProducto;
-        private DataGridViewTextBoxColumn Cantidad;
         private TableLayoutPanel tableLayoutPanel1;
         private ComboBox combCliente;
         private ComboBox combTipoComprobante;
@@ -332,5 +398,14 @@
         private TableLayoutPanel tableLayoutNuevaFactura;
         private Button btnNuevaVenta;
         private Button btnCancelarVenta;
+        private TextBox txtNumeroComprobante;
+        private Label label8;
+        private Button btnFinalizarVenta;
+        private TextBox txtSubtotalLinea;
+        private DataGridViewTextBoxColumn TipoProducto;
+        private DataGridViewTextBoxColumn NombreProducto;
+        private DataGridViewTextBoxColumn idProducto;
+        private DataGridViewTextBoxColumn Cantidad;
+        private DataGridViewTextBoxColumn Subtotal;
     }
 }
