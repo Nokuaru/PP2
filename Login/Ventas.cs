@@ -1,4 +1,5 @@
-﻿using Login.Data;
+﻿using Login;
+using Login.Data;
 using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -83,7 +85,7 @@ namespace Login
         {
             double valorSubtotalLinea = precioUnitario * (int)txtNumericBox.Value;
 
-            txtSubtotalLinea.Text = valorSubtotalLinea.ToString();
+            txtSubtotalLinea.Text = Math.Round( valorSubtotalLinea,2).ToString();
 
         }
 
@@ -175,6 +177,20 @@ namespace Login
 
         }
 
+        private void ActualizaTotalDeFactura()
+        {
+            int filas = dataGridDetalleVenta.RowCount;
+            double acuTotalFactura = 0.0;
+            double tempDouble;
+            for (int i = 0; i < filas; i++)
+            {
+                tempDouble = double.Parse(dataGridDetalleVenta[4, i].Value.ToString());
+                acuTotalFactura = acuTotalFactura + double.Parse(dataGridDetalleVenta[4, i].Value.ToString());
+            }
+            txtTotalFactura.Text = Math.Round(acuTotalFactura, 2).ToString();
+        }
+
+
         private void CargaDataGridDetalle()
         {
             string tipoProducto, nombreProducto, cantidad, idTipoProducto, subtotal;
@@ -254,10 +270,12 @@ namespace Login
             ActualizaSubtotalLinea(getPrecioUnitario());
 
         }
-
+        
         private void btnAgregarAVenta_Click(object sender, EventArgs e)
         {
             CargaDataGridDetalle();
+            btnFinalizarVenta.Enabled = true;
+            ActualizaTotalDeFactura();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -273,44 +291,84 @@ namespace Login
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
             btnCancelarVenta.Enabled = true;
+            btnNuevaVenta.Enabled = false;
+            btnAgregarAVenta.Enabled = true;
 
-            string idCliente, idFormaPago, idTipoComprobante, numeroComprobante, consCombProducto;
-            idCliente= combCliente.SelectedValue.ToString();
-            idFormaPago = combFormaPago.SelectedValue.ToString();
-            idTipoComprobante = combTipoComprobante.SelectedValue.ToString();
-            numeroComprobante = txtNumeroComprobante.Text;
-
-            string cons = "INSERT INTO Venta(idCliente,idUsuario,idTipoComprobante,idEstadoVenta,idFormaPago, NumeroComprobante) VALUES	("+idCliente+",1000,"+ idTipoComprobante + ",3,"+idFormaPago+","+numeroComprobante+")";
-
-            string filasAfectadas = null;
-            Conexion con = new Conexion();
-            
-            SqlCommand cmd = new SqlCommand(cons, con.Conectar());
-            filasAfectadas = cmd.ExecuteNonQuery().ToString();
-
-            if(filasAfectadas.Length > 0)
+            try
             {
-                MessageBox.Show("Factura creada con éxito. Agregue los items correspondientes");
-                tableLayoutPanel1.Enabled = true;
-                btnAgregarAVenta.Enabled = false;
-                combProducto.Enabled = true;
-                btnAgregarAVenta.Enabled = true;
-                dataGridDetalleVenta.Enabled = true;
-                consCombProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
-                CargaCombos(combProducto, consCombProducto, "idCategoria", "DescripcionCatProd");
-                txtNumericBox.Enabled = true;
+                string idCliente, idFormaPago, idTipoComprobante, numeroComprobante, consCombProducto;
+                idCliente= combCliente.SelectedValue.ToString();
+                idFormaPago = combFormaPago.SelectedValue.ToString();
+                idTipoComprobante = combTipoComprobante.SelectedValue.ToString();
+                numeroComprobante = txtNumeroComprobante.Text;
 
+                string cons = "INSERT INTO Venta(idCliente,idUsuario,idTipoComprobante,idEstadoVenta,idFormaPago, NumeroComprobante) VALUES	("+idCliente+",1000,"+ idTipoComprobante + ",3,"+idFormaPago+","+numeroComprobante+")";
+
+                string filasAfectadas = null;
+                Conexion con = new Conexion();
+            
+                SqlCommand cmd = new SqlCommand(cons, con.Conectar());
+                filasAfectadas = cmd.ExecuteNonQuery().ToString();
+
+                if(filasAfectadas.Length > 0)
+                {
+                    MessageBox.Show("Factura creada con éxito. Agregue los items correspondientes");
+                    tableLayoutPanel1.Enabled = true;
+                    btnAgregarAVenta.Enabled = false;
+                    combProducto.Enabled = true;
+                
+                    btnAgregarAVenta.Enabled = true;
+                    dataGridDetalleVenta.Enabled = true;
+                    consCombProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
+                    CargaCombos(combProducto, consCombProducto, "idCategoria", "DescripcionCatProd");
+                    txtNumericBox.Enabled = true;
+                    combProducto.SelectedIndex = -1;
+
+                }
+                con.Desconectar();
+
+                combCliente.Enabled = false;
+                combTipoComprobante.Enabled = false;
+                combFormaPago.Enabled = false;
+                txtNumeroComprobante.Enabled = false;
             }
-            con.Desconectar();
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
-
-
-
 
         private void btnCancelarVenta_Click(object sender, EventArgs e)
         {
             btnNuevaVenta.Enabled = true;
             btnCancelarVenta.Enabled = false;
+            // resetea factura
+            combCliente.SelectedIndex = -1;
+            combTipoComprobante.SelectedIndex= -1;  
+            combFormaPago.SelectedIndex = -1;
+            txtNumeroComprobante.ResetText();
+            // resetea detalle
+            combProducto.SelectedIndex = -1;
+            combNombreProducto.SelectedIndex = -1;
+            txtNumericBox.ResetText();
+            txtSubtotalLinea.ResetText();
+            txtTotalFactura.ResetText();
+            dataGridDetalleVenta.Rows.Clear();
+            btnAgregarAVenta.Enabled = false;
+            btnFinalizarVenta.Enabled = false;
+
+            //bloquea detalle factura
+            combProducto.Enabled = false;
+            combNombreProducto.Enabled = false;
+            txtNumericBox.Enabled = false;
+            txtSubtotalLinea.Enabled = false;
+
+            //habilita factura
+            combCliente.Enabled = true;
+            combTipoComprobante.Enabled = true;
+            combFormaPago.Enabled = true;
+
         }
 
         private void txtNumericBox_ValueChanged(object sender, EventArgs e)
@@ -324,6 +382,8 @@ namespace Login
         {
             string idVenta = getIdVenta();
             string acumulaQry = "";
+            string totalFactura;
+            var res = DialogResult;
 
             int filas = dataGridDetalleVenta.RowCount;
             if (filas >0) {
@@ -331,7 +391,7 @@ namespace Login
 
                     if (filas==1)
                     {
-                        qry[0] = "(" + idVenta + "," + dataGridDetalleVenta[2,1].Value.ToString()+"," + dataGridDetalleVenta[3, 1].Value.ToString()+")";
+                        qry[0] = "(" + idVenta + "," + dataGridDetalleVenta[2,0].Value.ToString()+"," + dataGridDetalleVenta[3, 0].Value.ToString()+")";
                     }
                     else
                     {
@@ -359,7 +419,16 @@ namespace Login
                     cmd.ExecuteNonQuery();
                     con.Desconectar();
                     actualizaEstadoFactura(1);
-                    MessageBox.Show("Factura generada con éxito.");
+
+                    totalFactura = txtTotalFactura.Text;
+
+                    res = MessageBox.Show("Se generó la factura número "+ txtNumeroComprobante.Text.ToString() +" por un monto total de $"+ totalFactura, "Factura generada con éxito.", MessageBoxButtons.OK);
+                    if (res == DialogResult.OK)
+                    {
+                       // Home home = new Home();
+                       // home.navVenta_Click();
+                    }
+
                 }
                 catch (SqlException ex)
                 {
