@@ -293,7 +293,7 @@
             this.navHome.BackgroundImage = global::Login.Properties.Resources.home;
             this.navHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.navHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.navHome.Location = new System.Drawing.Point(3, 31);
+            this.navHome.Location = new System.Drawing.Point(6, 31);
             this.navHome.Name = "navHome";
             this.navHome.Size = new System.Drawing.Size(103, 40);
             this.navHome.TabIndex = 0;
