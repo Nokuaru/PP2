@@ -12,6 +12,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ComboBox = System.Windows.Forms.ComboBox;
 
 namespace Login
 {
@@ -28,10 +30,13 @@ namespace Login
             //Combos de la factura
             string consultaComboCliente = "SELECT idCliente,Nombre FROM Cliente ORDER BY Nombre DESC";
             CargaCombos(combCliente, consultaComboCliente, "idCliente", "Nombre");
+            combCliente.SelectedIndex= - 1;
             String consultaComboTComprobante = "SELECT idTipoComprobante, DescripcionTipoComprobante FROM TipoComprobante";
             CargaCombos(combTipoComprobante, consultaComboTComprobante, "idTipoComprobante", "DescripcionTipoComprobante");
+            combTipoComprobante.SelectedIndex = -1;
             String consutaComboFPago = "SELECT idFormaPago, DescripcionFormaPago FROM FormaPago";
             CargaCombos(combFormaPago, consutaComboFPago, "idFormaPago", "DescripcionFormaPago");
+            combFormaPago.SelectedIndex = -1;
 
             //Combos del detalle de factura
             string consultaComboProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
@@ -88,7 +93,6 @@ namespace Login
             txtSubtotalLinea.Text = Math.Round( valorSubtotalLinea,2).ToString();
 
         }
-
 
         private double getPrecioUnitario()
         {
@@ -179,15 +183,25 @@ namespace Login
 
         private void ActualizaTotalDeFactura()
         {
-            int filas = dataGridDetalleVenta.RowCount;
-            double acuTotalFactura = 0.0;
-            double tempDouble;
-            for (int i = 0; i < filas; i++)
+            try
             {
-                tempDouble = double.Parse(dataGridDetalleVenta[4, i].Value.ToString());
-                acuTotalFactura = acuTotalFactura + double.Parse(dataGridDetalleVenta[4, i].Value.ToString());
+
+                int filas = dataGridDetalleVenta.RowCount;
+                double acuTotalFactura = 0.0;
+                double tempDouble;
+                for (int i = 0; i < filas; i++)
+                {
+                    tempDouble = double.Parse(dataGridDetalleVenta[4, i].Value.ToString());
+                    acuTotalFactura = acuTotalFactura + double.Parse(dataGridDetalleVenta[4, i].Value.ToString());
+                }
+                txtTotalFactura.Text = Math.Round(acuTotalFactura, 2).ToString();
+
             }
-            txtTotalFactura.Text = Math.Round(acuTotalFactura, 2).ToString();
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Erorr al actualizar el total de la factura  format exception\n" + ex);
+                throw;
+            }
         }
 
 
@@ -197,7 +211,7 @@ namespace Login
 
             tipoProducto = combNombreProducto.Text;
             idTipoProducto = combNombreProducto.SelectedValue.ToString();
-            nombreProducto = combProducto.Text.ToString();
+            nombreProducto = combNombreProducto.Text.ToString();
             cantidad = txtNumericBox.Value.ToString();
             subtotal = txtSubtotalLinea.Text;
 
@@ -244,14 +258,10 @@ namespace Login
         {
             try
             {
-
-
-
                 combNombreProducto.Enabled = true;
                 int iDCategoria = int.Parse(combProducto.SelectedValue.ToString());
                 string consulta = "SELECT idProducto,Nombre from Producto WHERE idCategoria = '" + iDCategoria + "'";
                 CargaCombos(combNombreProducto, consulta, "idProducto", "Nombre");
-
 
             }
             catch (Exception)
@@ -265,17 +275,25 @@ namespace Login
         {
 
             txtNumericBox.Enabled = true;
-
-
+            txtPrecioUnitario.Text = getPrecioUnitario().ToString();
+            
             ActualizaSubtotalLinea(getPrecioUnitario());
 
         }
         
         private void btnAgregarAVenta_Click(object sender, EventArgs e)
         {
-            CargaDataGridDetalle();
-            btnFinalizarVenta.Enabled = true;
-            ActualizaTotalDeFactura();
+            if(combProducto.SelectedIndex!=-1&&combNombreProducto.SelectedIndex!=-1&&txtNumericBox.Value!=0&&string.IsNullOrEmpty(txtPrecioUnitario.Text)&& string.IsNullOrEmpty(txtSubtotalLinea.Text))
+            {
+                CargaDataGridDetalle();
+                btnFinalizarVenta.Enabled = true;
+                ActualizaTotalDeFactura();
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar todos datos del detalle de factura para continuar", "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -290,51 +308,62 @@ namespace Login
 
         private void btnNuevaVenta_Click(object sender, EventArgs e)
         {
-            btnCancelarVenta.Enabled = true;
-            btnNuevaVenta.Enabled = false;
-            btnAgregarAVenta.Enabled = true;
 
             try
             {
-                string idCliente, idFormaPago, idTipoComprobante, numeroComprobante, consCombProducto;
-                idCliente= combCliente.SelectedValue.ToString();
-                idFormaPago = combFormaPago.SelectedValue.ToString();
-                idTipoComprobante = combTipoComprobante.SelectedValue.ToString();
-                numeroComprobante = txtNumeroComprobante.Text;
-
-                string cons = "INSERT INTO Venta(idCliente,idUsuario,idTipoComprobante,idEstadoVenta,idFormaPago, NumeroComprobante) VALUES	("+idCliente+",1000,"+ idTipoComprobante + ",3,"+idFormaPago+","+numeroComprobante+")";
-
-                string filasAfectadas = null;
-                Conexion con = new Conexion();
-            
-                SqlCommand cmd = new SqlCommand(cons, con.Conectar());
-                filasAfectadas = cmd.ExecuteNonQuery().ToString();
-
-                if(filasAfectadas.Length > 0)
+                if (combCliente.SelectedIndex!=-1 && combFormaPago.SelectedIndex!=-1 && combTipoComprobante.SelectedIndex != -1 && !string.IsNullOrEmpty(txtNumeroComprobante.Text))
                 {
-                    MessageBox.Show("Factura creada con éxito. Agregue los items correspondientes");
-                    tableLayoutPanel1.Enabled = true;
-                    btnAgregarAVenta.Enabled = false;
-                    combProducto.Enabled = true;
-                
+
+                    btnCancelarVenta.Enabled = true;
+                    btnNuevaVenta.Enabled = false;
                     btnAgregarAVenta.Enabled = true;
-                    dataGridDetalleVenta.Enabled = true;
-                    consCombProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
-                    CargaCombos(combProducto, consCombProducto, "idCategoria", "DescripcionCatProd");
-                    txtNumericBox.Enabled = true;
-                    combProducto.SelectedIndex = -1;
+                    string idCliente, idFormaPago, idTipoComprobante, numeroComprobante, consCombProducto;
+                    idCliente = combCliente.SelectedValue.ToString();
+                    idFormaPago = combFormaPago.SelectedValue.ToString();
+                    idTipoComprobante = combTipoComprobante.SelectedValue.ToString();
+                    numeroComprobante = txtNumeroComprobante.Text;
+
+                    string cons = "INSERT INTO Venta(idCliente,idUsuario,idTipoComprobante,idEstadoVenta,idFormaPago, NumeroComprobante) VALUES	(" + idCliente + ",1000," + idTipoComprobante + ",3," + idFormaPago + "," + numeroComprobante + ")";
+
+                    string filasAfectadas = null;
+                    Conexion con = new Conexion();
+
+                    SqlCommand cmd = new SqlCommand(cons, con.Conectar());
+                    filasAfectadas = cmd.ExecuteNonQuery().ToString();
+
+                    if (filasAfectadas.Length > 0)
+                    {
+                        MessageBox.Show("Factura creada con éxito. Agregue los items correspondientes");
+                        tableLayoutPanel1.Enabled = true;
+                        btnAgregarAVenta.Enabled = false;
+                        combProducto.Enabled = true;
+
+                        btnAgregarAVenta.Enabled = true;
+                        dataGridDetalleVenta.Enabled = true;
+                        consCombProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
+                        CargaCombos(combProducto, consCombProducto, "idCategoria", "DescripcionCatProd");
+                        txtNumericBox.Enabled = true;
+                        combProducto.SelectedIndex = -1;
+
+                    }
+                    con.Desconectar();
+
+                    combCliente.Enabled = false;
+                    combTipoComprobante.Enabled = false;
+                    combFormaPago.Enabled = false;
+                    txtNumeroComprobante.Enabled = false;
 
                 }
-                con.Desconectar();
+                else
+                {
+                    MessageBox.Show("Debe ingresar todos datos de la factura para continuar","Faltan datos",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                }
 
-                combCliente.Enabled = false;
-                combTipoComprobante.Enabled = false;
-                combFormaPago.Enabled = false;
-                txtNumeroComprobante.Enabled = false;
+                
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Error en botón nueva venta");
                 throw;
             }
         }
@@ -343,6 +372,11 @@ namespace Login
         {
             btnNuevaVenta.Enabled = true;
             btnCancelarVenta.Enabled = false;
+            ReseteaTodo();
+        }
+
+        private void ReseteaTodo()
+        {
             // resetea factura
             combCliente.SelectedIndex = -1;
             combTipoComprobante.SelectedIndex= -1;  
@@ -355,6 +389,7 @@ namespace Login
             txtSubtotalLinea.ResetText();
             txtTotalFactura.ResetText();
             dataGridDetalleVenta.Rows.Clear();
+            txtPrecioUnitario.ResetText();
             btnAgregarAVenta.Enabled = false;
             btnFinalizarVenta.Enabled = false;
 
@@ -425,20 +460,43 @@ namespace Login
                     res = MessageBox.Show("Se generó la factura número "+ txtNumeroComprobante.Text.ToString() +" por un monto total de $"+ totalFactura, "Factura generada con éxito.", MessageBoxButtons.OK);
                     if (res == DialogResult.OK)
                     {
-                       // Home home = new Home();
-                       // home.navVenta_Click();
+                        ReseteaTodo();
                     }
 
                 }
                 catch (SqlException ex)
                 {
-                    MessageBox.Show("Error al insertar detalles de factura \n" + ex);
+                    MessageBox.Show("Error sql al insertar detalles de factura \n" + ex);
                     throw;
                 }
 
             }
             
 
+
+        }
+
+        private void txtNumeroComprobante_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                lblIngresarNumeros.Visible = true;
+            }
+            else
+            {
+                lblIngresarNumeros.Visible = false;
+
+            }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNumeroComprobante.Text))
+            {
+
+                lblPrueba.Text = "string.IsNullOrEmpty :) ";
+            }
 
         }
     }

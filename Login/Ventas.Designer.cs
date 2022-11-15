@@ -43,8 +43,10 @@
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.txtPrecioUnitario = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.txtSubtotalLinea = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.combCliente = new System.Windows.Forms.ComboBox();
             this.combTipoComprobante = new System.Windows.Forms.ComboBox();
             this.combFormaPago = new System.Windows.Forms.ComboBox();
@@ -61,6 +63,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.lblIngresarNumeros = new System.Windows.Forms.Label();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.lblPrueba = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -83,7 +88,7 @@
             this.combProducto.FormattingEnabled = true;
             this.combProducto.Location = new System.Drawing.Point(3, 23);
             this.combProducto.Name = "combProducto";
-            this.combProducto.Size = new System.Drawing.Size(121, 23);
+            this.combProducto.Size = new System.Drawing.Size(101, 23);
             this.combProducto.TabIndex = 1;
             this.combProducto.SelectionChangeCommitted += new System.EventHandler(this.combProducto_SelectionChangeCommitted);
             // 
@@ -102,16 +107,16 @@
             this.combNombreProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combNombreProducto.Enabled = false;
             this.combNombreProducto.FormattingEnabled = true;
-            this.combNombreProducto.Location = new System.Drawing.Point(144, 23);
+            this.combNombreProducto.Location = new System.Drawing.Point(110, 23);
             this.combNombreProducto.Name = "combNombreProducto";
-            this.combNombreProducto.Size = new System.Drawing.Size(135, 23);
+            this.combNombreProducto.Size = new System.Drawing.Size(128, 23);
             this.combNombreProducto.TabIndex = 3;
             this.combNombreProducto.SelectionChangeCommitted += new System.EventHandler(this.combNombreProducto_SelectionChangeCommitted);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(144, 0);
+            this.label3.Location = new System.Drawing.Point(110, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 15);
             this.label3.TabIndex = 4;
@@ -120,7 +125,7 @@
             // txtNumericBox
             // 
             this.txtNumericBox.Enabled = false;
-            this.txtNumericBox.Location = new System.Drawing.Point(285, 23);
+            this.txtNumericBox.Location = new System.Drawing.Point(244, 23);
             this.txtNumericBox.Name = "txtNumericBox";
             this.txtNumericBox.Size = new System.Drawing.Size(55, 23);
             this.txtNumericBox.TabIndex = 5;
@@ -129,7 +134,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(285, 0);
+            this.label4.Location = new System.Drawing.Point(244, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 6;
@@ -158,7 +163,7 @@
             this.idProducto,
             this.Cantidad,
             this.Subtotal});
-            this.tableLayoutPanel1.SetColumnSpan(this.dataGridDetalleVenta, 4);
+            this.tableLayoutPanel1.SetColumnSpan(this.dataGridDetalleVenta, 5);
             this.dataGridDetalleVenta.Location = new System.Drawing.Point(3, 63);
             this.dataGridDetalleVenta.Name = "dataGridDetalleVenta";
             this.dataGridDetalleVenta.ReadOnly = true;
@@ -199,13 +204,14 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Controls.Add(this.label9, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtSubtotalLinea, 3, 1);
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.04762F));
+            this.tableLayoutPanel1.Controls.Add(this.txtPrecioUnitario, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label13, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label4, 2, 0);
@@ -213,6 +219,8 @@
             this.tableLayoutPanel1.Controls.Add(this.combNombreProducto, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.combProducto, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridDetalleVenta, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtSubtotalLinea, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 4, 0);
             this.tableLayoutPanel1.Enabled = false;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 213);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -225,23 +233,40 @@
             this.tableLayoutPanel1.TabIndex = 9;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // label9
+            // txtPrecioUnitario
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(426, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(51, 15);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "Subtotal";
+            this.txtPrecioUnitario.Enabled = false;
+            this.txtPrecioUnitario.Location = new System.Drawing.Point(351, 23);
+            this.txtPrecioUnitario.Name = "txtPrecioUnitario";
+            this.txtPrecioUnitario.Size = new System.Drawing.Size(100, 23);
+            this.txtPrecioUnitario.TabIndex = 25;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(351, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 15);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Precio Unitario";
             // 
             // txtSubtotalLinea
             // 
             this.txtSubtotalLinea.Enabled = false;
-            this.txtSubtotalLinea.Location = new System.Drawing.Point(426, 23);
+            this.txtSubtotalLinea.Location = new System.Drawing.Point(458, 23);
             this.txtSubtotalLinea.Name = "txtSubtotalLinea";
             this.txtSubtotalLinea.Size = new System.Drawing.Size(100, 23);
             this.txtSubtotalLinea.TabIndex = 20;
             this.txtSubtotalLinea.Text = "Subtotal";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(458, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 15);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Subtotal";
             // 
             // combCliente
             // 
@@ -336,6 +361,7 @@
             this.txtNumeroComprobante.Name = "txtNumeroComprobante";
             this.txtNumeroComprobante.Size = new System.Drawing.Size(106, 23);
             this.txtNumeroComprobante.TabIndex = 19;
+            this.txtNumeroComprobante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroComprobante_KeyPress);
             // 
             // btnNuevaVenta
             // 
@@ -372,7 +398,7 @@
             // txtTotalFactura
             // 
             this.txtTotalFactura.Enabled = false;
-            this.txtTotalFactura.Location = new System.Drawing.Point(595, 236);
+            this.txtTotalFactura.Location = new System.Drawing.Point(605, 236);
             this.txtTotalFactura.Name = "txtTotalFactura";
             this.txtTotalFactura.Size = new System.Drawing.Size(89, 23);
             this.txtTotalFactura.TabIndex = 20;
@@ -380,7 +406,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(594, 213);
+            this.label10.Location = new System.Drawing.Point(604, 213);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 15);
             this.label10.TabIndex = 21;
@@ -406,11 +432,45 @@
             this.label12.TabIndex = 23;
             this.label12.Text = "Detalle de la factura";
             // 
+            // lblIngresarNumeros
+            // 
+            this.lblIngresarNumeros.AutoSize = true;
+            this.lblIngresarNumeros.BackColor = System.Drawing.Color.Transparent;
+            this.lblIngresarNumeros.ForeColor = System.Drawing.Color.Crimson;
+            this.lblIngresarNumeros.Location = new System.Drawing.Point(518, 139);
+            this.lblIngresarNumeros.Name = "lblIngresarNumeros";
+            this.lblIngresarNumeros.Size = new System.Drawing.Size(154, 15);
+            this.lblIngresarNumeros.TabIndex = 24;
+            this.lblIngresarNumeros.Text = "Debe ingresar solo números";
+            this.lblIngresarNumeros.Visible = false;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(194, 27);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(99, 32);
+            this.btnTest.TabIndex = 25;
+            this.btnTest.Text = "Prueba";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // lblPrueba
+            // 
+            this.lblPrueba.AutoSize = true;
+            this.lblPrueba.Location = new System.Drawing.Point(341, 36);
+            this.lblPrueba.Name = "lblPrueba";
+            this.lblPrueba.Size = new System.Drawing.Size(44, 15);
+            this.lblPrueba.TabIndex = 26;
+            this.lblPrueba.Text = "Prueba";
+            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 711);
+            this.Controls.Add(this.lblPrueba);
+            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.lblIngresarNumeros);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -472,5 +532,10 @@
         private Label label10;
         private Label label11;
         private Label label12;
+        private Label lblIngresarNumeros;
+        private TextBox txtPrecioUnitario;
+        private Label label13;
+        private Button btnTest;
+        private Label lblPrueba;
     }
 }
