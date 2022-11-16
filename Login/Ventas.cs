@@ -490,14 +490,5 @@ namespace Login
             }
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtNumeroComprobante.Text))
-            {
-
-                lblPrueba.Text = "string.IsNullOrEmpty :) ";
-            }
-
-        }
     }
 }
