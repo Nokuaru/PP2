@@ -188,6 +188,10 @@ CREATE TABLE DetalleVenta (
 )
 
 
+----------------------- MODIFICA USUARIO | AGRAGA COLUMNA ACTIVO -----------------------
+  ALTER TABLE [dbo].[Usuario]
+  ADD Activo bit not null DEFAULT 0
+
 --AGREGAMOS UN POCO DE DATA ACÁ
 
 INSERT INTO EstadoUsuario
