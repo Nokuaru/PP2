@@ -215,8 +215,8 @@ VALUES ('FACTURA A'), ('FACTURA B'), ('NOTA DE DEBITO'), ('NOTA DE CREDITO')
 
 			
 INSERT INTO Usuario
-			VALUES	('1','Facundo','Tomas','32478178','nokuaru@gmail.com','Nokuaru','123456','1121739785'),
-					('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321')
+			VALUES	('1','Facundo','Tomas','32478178','nokuaru@gmail.com','Nokuaru','123456','1121739785','1'),
+					('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321','1')
 INSERT INTO Proveedor (Cuit,RazonSocial,Direccion,Mail,Telefono) 
 			VALUES	('22222222222','McDonalds','General Paz 5445' ,'a@a.com','11111222'),
 					('11111111111','BurgerKing','Amenabar 5445' ,'b@b.com','32323232'),
@@ -241,4 +241,3 @@ INSERT INTO DetalleCompra (idCompra,idProducto,Cantidad)
 					('1000','1001','15'),
 					('1001','1000','7'),
 					('1001','1000','14')
-		
