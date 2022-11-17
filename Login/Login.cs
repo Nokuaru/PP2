@@ -52,9 +52,12 @@ namespace Login
                     if (contar == 1)
                     {
                         this.Hide();
-
-                       Home home = new Home ();
-                       home.Show();
+                        foreach (DataRow drow in ds.Tables[0].Rows)
+                        {
+                            ActivaUsuario(drow["idUsuario"].ToString());
+                        }
+                        Home home = new Home ();
+                        home.Show();
                     }
                     else
                     {
@@ -70,7 +73,24 @@ namespace Login
 
         }
 
+        private void ActivaUsuario(string idUsuario)
+        {
+            try
+            {
+                Conexion con = new Conexion();
+                string sql = "UPDATE Usuario SET Activo = 0 WHERE Activo = 1; \n" +
+                    "UPDATE Usuario SET Activo = 1 WHERE idUsuario= " + idUsuario;
+                SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+                cmd.ExecuteNonQuery();
+                con.Desconectar();
 
+            }
+            catch (SqlException exsql)
+            {
+                MessageBox.Show("Error en la activación del usuario en cuestión" + exsql.Message);
+                throw;
+            }
+        }
         private void txtUsuario_MouseClick(object sender, MouseEventArgs e)
         {
             lblUsuario.Text = "";
@@ -80,6 +100,25 @@ namespace Login
         private void txtPassword_MouseClick(object sender, MouseEventArgs e)
         {
             lblPassword.Text = "";
+        }
+
+        public string getUsuarioActivo()
+        {
+            string usuarioActivo= String.Empty;
+
+            Conexion con = new Conexion();
+            string sql = "SELECT idUsuario FROM Usuario WHERE Activo=1";
+            SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            adapt.Fill(ds);
+            con.Desconectar();
+
+            foreach (DataRow drow in ds.Tables[0].Rows)
+            {
+                usuarioActivo = drow["idUsuario"].ToString();
+            }
+            return usuarioActivo;
         }
     }
 }

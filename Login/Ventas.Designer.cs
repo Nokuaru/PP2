@@ -64,8 +64,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblIngresarNumeros = new System.Windows.Forms.Label();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.lblPrueba = new System.Windows.Forms.Label();
+            this.chkEliminarDetalleSubfactura = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -170,6 +169,7 @@
             this.dataGridDetalleVenta.RowTemplate.Height = 25;
             this.dataGridDetalleVenta.Size = new System.Drawing.Size(550, 237);
             this.dataGridDetalleVenta.TabIndex = 8;
+            this.dataGridDetalleVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridDetalleVenta_RowsRemoved);
             // 
             // TipoProducto
             // 
@@ -444,32 +444,23 @@
             this.lblIngresarNumeros.Text = "Debe ingresar solo números";
             this.lblIngresarNumeros.Visible = false;
             // 
-            // btnTest
+            // chkEliminarDetalleSubfactura
             // 
-            this.btnTest.Location = new System.Drawing.Point(194, 27);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(99, 32);
-            this.btnTest.TabIndex = 25;
-            this.btnTest.Text = "Prueba";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // lblPrueba
-            // 
-            this.lblPrueba.AutoSize = true;
-            this.lblPrueba.Location = new System.Drawing.Point(341, 36);
-            this.lblPrueba.Name = "lblPrueba";
-            this.lblPrueba.Size = new System.Drawing.Size(44, 15);
-            this.lblPrueba.TabIndex = 26;
-            this.lblPrueba.Text = "Prueba";
+            this.chkEliminarDetalleSubfactura.AutoSize = true;
+            this.chkEliminarDetalleSubfactura.Location = new System.Drawing.Point(605, 276);
+            this.chkEliminarDetalleSubfactura.Name = "chkEliminarDetalleSubfactura";
+            this.chkEliminarDetalleSubfactura.Size = new System.Drawing.Size(147, 19);
+            this.chkEliminarDetalleSubfactura.TabIndex = 25;
+            this.chkEliminarDetalleSubfactura.Text = "Eliminar detalle factura";
+            this.chkEliminarDetalleSubfactura.UseVisualStyleBackColor = true;
+            this.chkEliminarDetalleSubfactura.CheckedChanged += new System.EventHandler(this.chkEliminarDetalleSubfactura_CheckedChanged);
             // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 711);
-            this.Controls.Add(this.lblPrueba);
-            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.chkEliminarDetalleSubfactura);
             this.Controls.Add(this.lblIngresarNumeros);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -535,7 +526,6 @@
         private Label lblIngresarNumeros;
         private TextBox txtPrecioUnitario;
         private Label label13;
-        private Button btnTest;
-        private Label lblPrueba;
+        private CheckBox chkEliminarDetalleSubfactura;
     }
 }
