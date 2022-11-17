@@ -64,6 +64,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblIngresarNumeros = new System.Windows.Forms.Label();
+            this.chkEliminarDetalleSubfactura = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -168,6 +169,7 @@
             this.dataGridDetalleVenta.RowTemplate.Height = 25;
             this.dataGridDetalleVenta.Size = new System.Drawing.Size(550, 237);
             this.dataGridDetalleVenta.TabIndex = 8;
+            this.dataGridDetalleVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridDetalleVenta_RowsRemoved);
             // 
             // TipoProducto
             // 
@@ -442,11 +444,23 @@
             this.lblIngresarNumeros.Text = "Debe ingresar solo números";
             this.lblIngresarNumeros.Visible = false;
             // 
+            // chkEliminarDetalleSubfactura
+            // 
+            this.chkEliminarDetalleSubfactura.AutoSize = true;
+            this.chkEliminarDetalleSubfactura.Location = new System.Drawing.Point(605, 276);
+            this.chkEliminarDetalleSubfactura.Name = "chkEliminarDetalleSubfactura";
+            this.chkEliminarDetalleSubfactura.Size = new System.Drawing.Size(147, 19);
+            this.chkEliminarDetalleSubfactura.TabIndex = 25;
+            this.chkEliminarDetalleSubfactura.Text = "Eliminar detalle factura";
+            this.chkEliminarDetalleSubfactura.UseVisualStyleBackColor = true;
+            this.chkEliminarDetalleSubfactura.CheckedChanged += new System.EventHandler(this.chkEliminarDetalleSubfactura_CheckedChanged);
+            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 711);
+            this.Controls.Add(this.chkEliminarDetalleSubfactura);
             this.Controls.Add(this.lblIngresarNumeros);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -512,5 +526,6 @@
         private Label lblIngresarNumeros;
         private TextBox txtPrecioUnitario;
         private Label label13;
+        private CheckBox chkEliminarDetalleSubfactura;
     }
 }

@@ -283,7 +283,7 @@ namespace Login
         
         private void btnAgregarAVenta_Click(object sender, EventArgs e)
         {
-            if(combProducto.SelectedIndex!=-1&&combNombreProducto.SelectedIndex!=-1&&txtNumericBox.Value!=0&&string.IsNullOrEmpty(txtPrecioUnitario.Text)&& string.IsNullOrEmpty(txtSubtotalLinea.Text))
+            if(combProducto.SelectedIndex!=-1&&combNombreProducto.SelectedIndex!=-1&&txtNumericBox.Value!=0)
             {
                 CargaDataGridDetalle();
                 btnFinalizarVenta.Enabled = true;
@@ -422,7 +422,7 @@ namespace Login
 
             int filas = dataGridDetalleVenta.RowCount;
             if (filas >0) {
-                string[] qry = new string[filas];   
+                string[] qry = new string[filas];
 
                     if (filas==1)
                     {
@@ -486,9 +486,48 @@ namespace Login
             else
             {
                 lblIngresarNumeros.Visible = false;
-
             }
         }
 
+        private void chkEliminarDetalleSubfactura_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEliminarDetalleSubfactura.Checked)
+            {
+                btnAgregarAVenta.Enabled = false;
+                btnFinalizarVenta.Enabled = false;
+                btnCancelarVenta.Enabled = false;
+                combProducto.Enabled = false;
+                combNombreProducto.Enabled = false;
+                txtNumericBox.Enabled = false;
+                txtSubtotalLinea.Enabled = false;
+
+
+                chkEliminarDetalleSubfactura.BackColor = Color.Red;
+                dataGridDetalleVenta.AllowUserToDeleteRows = true;
+                MessageBox.Show("Ahora puede eliminar las filas del detalle de factura que desee. Una vez finalizado quite la tilde de \"Eliminar detalle de factura\". ");
+
+            }
+            else
+            {
+                chkEliminarDetalleSubfactura.BackColor = Color.Transparent;
+                dataGridDetalleVenta.AllowUserToDeleteRows = false;
+
+
+                btnAgregarAVenta.Enabled = true;
+                btnFinalizarVenta.Enabled = true;
+                btnCancelarVenta.Enabled = true;
+                combProducto.Enabled = true;
+                combNombreProducto.Enabled = true;
+                txtNumericBox.Enabled = true;
+                txtSubtotalLinea.Enabled = true;
+
+            }
+            ActualizaTotalDeFactura();
+        }
+
+        private void dataGridDetalleVenta_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            ActualizaTotalDeFactura();
+        }
     }
 }
