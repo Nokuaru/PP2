@@ -2,7 +2,7 @@ USE Grupo42
 GO
 
 --PARA ARRANCAR DE NUEVO, CORRAN EL DROP DE LAS TABLAS 
---DROP TABLE DetalleVenta, DetalleCompra, Venta, Compra, Producto, Proveedor, Usuario, Cliente, EstadoCliente, EstadoVenta, FormaPago, CategoriaProducto,EstadoCompra,EstadoUsuario
+--DROP TABLE DetalleVenta, DetalleCompra, Venta, Compra, Producto, Proveedor, Usuario, Cliente, EstadoCliente, EstadoVenta, FormaPago, CategoriaProducto,EstadoCompra,EstadoUsuario,TipoComprobante
 
 -- CREA TABLA ESTADOUSUARIO
 DROP TABLE IF EXISTS EstadoUsuario
@@ -205,7 +205,7 @@ INSERT INTO CategoriaProducto
 INSERT INTO EstadoCompra
 			VALUES ('Paga'),('Impaga')
 INSERT INTO EstadoVenta
-			VALUES ('Pago'),('Impago')
+			VALUES ('Pago'),('Impago'),('En Proceso')
 INSERT INTO EstadoCliente
 			VALUES ('Al día'),('Deudor'),('Requiere sicario')
 			
