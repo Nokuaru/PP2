@@ -1,6 +1,6 @@
 USE [Grupo42]
 GO
-
+--DROP VIEW V_Compra_UltimasCompras, V_Producto_Productos,V_Venta_Deudores,V_Venta_ListadoVentas
 
 /*********************************** CREACIÓN DE VISTAS ***********************************/
 
@@ -35,7 +35,7 @@ GO
 
 CREATE VIEW [dbo].[V_Producto_Productos]
 AS
-SELECT        dbo.CategoriaProducto.DescripcionCatProd AS [Tipo de Producto], dbo.Producto.Nombre, dbo.Proveedor.RazonSocial AS Proveedor, dbo.Producto.Cantidad, 
+SELECT        dbo.Producto.idProducto as [ID], dbo.CategoriaProducto.DescripcionCatProd AS [Tipo de Producto], dbo.Producto.Nombre, dbo.Proveedor.RazonSocial AS Proveedor, dbo.Producto.Cantidad, 
                          dbo.Producto.PrecioUnitarioCompra AS [Precio Unitario Compra], dbo.Producto.PrecioUnitarioVenta AS [Precio Unitario Venta]
 FROM            dbo.Producto INNER JOIN
                          dbo.CategoriaProducto ON dbo.Producto.idCategoria = dbo.CategoriaProducto.idCategoria INNER JOIN
