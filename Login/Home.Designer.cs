@@ -31,9 +31,8 @@
             this.pnlTop = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.procVenta = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,7 +48,6 @@
             this.pnlContent = new System.Windows.Forms.Panel();
             this.pnlTop.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,7 +60,6 @@
             // 
             this.pnlTop.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnlTop.Controls.Add(this.panel5);
-            this.pnlTop.Controls.Add(this.panel3);
             this.pnlTop.Controls.Add(this.panel2);
             this.pnlTop.Controls.Add(this.pictureBox1);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -94,36 +91,24 @@
             this.label11.Text = "USUARIO";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Location = new System.Drawing.Point(321, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 79);
-            this.panel3.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(23, 24);
-            this.label10.Margin = new System.Windows.Forms.Padding(0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(159, 21);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "COMPRA MENSUAL";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.procVenta);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(115, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 79);
             this.panel2.TabIndex = 1;
+            // 
+            // procVenta
+            // 
+            this.procVenta.AutoSize = true;
+            this.procVenta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.procVenta.Location = new System.Drawing.Point(73, 49);
+            this.procVenta.Name = "procVenta";
+            this.procVenta.Size = new System.Drawing.Size(57, 21);
+            this.procVenta.TabIndex = 1;
+            this.procVenta.Text = "label5";
             // 
             // label9
             // 
@@ -285,8 +270,6 @@
             this.pnlTop.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -315,9 +298,8 @@
         private PictureBox navProducto;
         private Panel panel5;
         private Label label11;
-        private Panel panel3;
-        private Label label10;
         private Panel panel2;
         private Label label9;
+        private Label procVenta;
     }
 }

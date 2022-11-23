@@ -1,22 +1,33 @@
-﻿using System;
+﻿using Login.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Login.Data.prodFunctions;
 
 namespace Login
 {
     public partial class Home : Form
+
+
     {
+       
         public Home()
         {
             InitializeComponent();
             Dashboard dashboard = new Dashboard();
             nav(dashboard, pnlContent);
+
+            decimal ventaTotal = getVentaTotal();
+            procVenta.Text = "$"+ventaTotal.ToString();
+
+
         }
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -49,5 +60,6 @@ namespace Login
             Ventas ventas = new Ventas();
             nav(ventas, pnlContent);
         }
+
     }
 }

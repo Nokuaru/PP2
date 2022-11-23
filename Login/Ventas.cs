@@ -1,4 +1,5 @@
 ﻿using Login;
+using static Login.Home;
 using Login.Data;
 using Microsoft.VisualBasic;
 using System;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ComboBox = System.Windows.Forms.ComboBox;
+using static Login.Data.prodFunctions;
 
 namespace Login
 {
@@ -466,6 +468,7 @@ namespace Login
                         ReseteaTodo();
                     }
 
+
                 }
                 catch (SqlException ex)
                 {
@@ -476,6 +479,8 @@ namespace Login
             }
 
             actualizarGridVentas();
+            decimal ventaTotal = getVentaTotal();
+            //Home.procVentaPriv = "$" + ventaTotal.ToString();
 
 
 
