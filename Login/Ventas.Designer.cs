@@ -65,19 +65,22 @@
             this.label12 = new System.Windows.Forms.Label();
             this.lblIngresarNumeros = new System.Windows.Forms.Label();
             this.chkEliminarDetalleSubfactura = new System.Windows.Forms.CheckBox();
+            this.dgVenta = new System.Windows.Forms.DataGridView();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutNuevaFactura.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Font = new System.Drawing.Font("Roboto Condensed", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(25, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 22);
+            this.label1.Size = new System.Drawing.Size(70, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "VENTAS";
             // 
@@ -106,7 +109,7 @@
             this.combNombreProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combNombreProducto.Enabled = false;
             this.combNombreProducto.FormattingEnabled = true;
-            this.combNombreProducto.Location = new System.Drawing.Point(110, 23);
+            this.combNombreProducto.Location = new System.Drawing.Point(123, 23);
             this.combNombreProducto.Name = "combNombreProducto";
             this.combNombreProducto.Size = new System.Drawing.Size(128, 23);
             this.combNombreProducto.TabIndex = 3;
@@ -115,7 +118,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(110, 0);
+            this.label3.Location = new System.Drawing.Point(123, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 15);
             this.label3.TabIndex = 4;
@@ -124,7 +127,7 @@
             // txtNumericBox
             // 
             this.txtNumericBox.Enabled = false;
-            this.txtNumericBox.Location = new System.Drawing.Point(244, 23);
+            this.txtNumericBox.Location = new System.Drawing.Point(273, 23);
             this.txtNumericBox.Name = "txtNumericBox";
             this.txtNumericBox.Size = new System.Drawing.Size(55, 23);
             this.txtNumericBox.TabIndex = 5;
@@ -133,7 +136,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(244, 0);
+            this.label4.Location = new System.Drawing.Point(273, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 15);
             this.label4.TabIndex = 6;
@@ -142,7 +145,7 @@
             // btnAgregarAVenta
             // 
             this.btnAgregarAVenta.Enabled = false;
-            this.btnAgregarAVenta.Location = new System.Drawing.Point(777, 236);
+            this.btnAgregarAVenta.Location = new System.Drawing.Point(841, 236);
             this.btnAgregarAVenta.Name = "btnAgregarAVenta";
             this.btnAgregarAVenta.Size = new System.Drawing.Size(136, 27);
             this.btnAgregarAVenta.TabIndex = 7;
@@ -155,6 +158,7 @@
             this.dataGridDetalleVenta.AllowUserToAddRows = false;
             this.dataGridDetalleVenta.AllowUserToDeleteRows = false;
             this.dataGridDetalleVenta.AllowUserToOrderColumns = true;
+            this.dataGridDetalleVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridDetalleVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridDetalleVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TipoProducto,
@@ -167,7 +171,7 @@
             this.dataGridDetalleVenta.Name = "dataGridDetalleVenta";
             this.dataGridDetalleVenta.ReadOnly = true;
             this.dataGridDetalleVenta.RowTemplate.Height = 25;
-            this.dataGridDetalleVenta.Size = new System.Drawing.Size(550, 237);
+            this.dataGridDetalleVenta.Size = new System.Drawing.Size(626, 129);
             this.dataGridDetalleVenta.TabIndex = 8;
             this.dataGridDetalleVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataGridDetalleVenta_RowsRemoved);
             // 
@@ -222,21 +226,21 @@
             this.tableLayoutPanel1.Controls.Add(this.txtSubtotalLinea, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.label9, 4, 0);
             this.tableLayoutPanel1.Enabled = false;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 213);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(25, 187);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(564, 312);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(632, 195);
             this.tableLayoutPanel1.TabIndex = 9;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // txtPrecioUnitario
             // 
             this.txtPrecioUnitario.Enabled = false;
-            this.txtPrecioUnitario.Location = new System.Drawing.Point(351, 23);
+            this.txtPrecioUnitario.Location = new System.Drawing.Point(393, 23);
             this.txtPrecioUnitario.Name = "txtPrecioUnitario";
             this.txtPrecioUnitario.Size = new System.Drawing.Size(100, 23);
             this.txtPrecioUnitario.TabIndex = 25;
@@ -244,7 +248,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(351, 0);
+            this.label13.Location = new System.Drawing.Point(393, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(85, 15);
             this.label13.TabIndex = 25;
@@ -253,7 +257,7 @@
             // txtSubtotalLinea
             // 
             this.txtSubtotalLinea.Enabled = false;
-            this.txtSubtotalLinea.Location = new System.Drawing.Point(458, 23);
+            this.txtSubtotalLinea.Location = new System.Drawing.Point(513, 23);
             this.txtSubtotalLinea.Name = "txtSubtotalLinea";
             this.txtSubtotalLinea.Size = new System.Drawing.Size(100, 23);
             this.txtSubtotalLinea.TabIndex = 20;
@@ -262,7 +266,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(458, 0);
+            this.label9.Location = new System.Drawing.Point(513, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 15);
             this.label9.TabIndex = 20;
@@ -281,7 +285,7 @@
             // 
             this.combTipoComprobante.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combTipoComprobante.FormattingEnabled = true;
-            this.combTipoComprobante.Location = new System.Drawing.Point(166, 24);
+            this.combTipoComprobante.Location = new System.Drawing.Point(184, 24);
             this.combTipoComprobante.Name = "combTipoComprobante";
             this.combTipoComprobante.Size = new System.Drawing.Size(126, 23);
             this.combTipoComprobante.TabIndex = 11;
@@ -290,7 +294,7 @@
             // 
             this.combFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.combFormaPago.FormattingEnabled = true;
-            this.combFormaPago.Location = new System.Drawing.Point(329, 24);
+            this.combFormaPago.Location = new System.Drawing.Point(365, 24);
             this.combFormaPago.Name = "combFormaPago";
             this.combFormaPago.Size = new System.Drawing.Size(110, 23);
             this.combFormaPago.TabIndex = 12;
@@ -308,16 +312,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(166, 0);
+            this.label6.Location = new System.Drawing.Point(184, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 15);
+            this.label6.Size = new System.Drawing.Size(121, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "Tipo de comprobante";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(329, 0);
+            this.label7.Location = new System.Drawing.Point(365, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 15);
             this.label7.TabIndex = 15;
@@ -343,13 +347,13 @@
             this.tableLayoutNuevaFactura.RowCount = 2;
             this.tableLayoutNuevaFactura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.59649F));
             this.tableLayoutNuevaFactura.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.40351F));
-            this.tableLayoutNuevaFactura.Size = new System.Drawing.Size(655, 57);
+            this.tableLayoutNuevaFactura.Size = new System.Drawing.Size(724, 57);
             this.tableLayoutNuevaFactura.TabIndex = 16;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(492, 0);
+            this.label8.Location = new System.Drawing.Point(546, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(126, 15);
             this.label8.TabIndex = 19;
@@ -357,7 +361,7 @@
             // 
             // txtNumeroComprobante
             // 
-            this.txtNumeroComprobante.Location = new System.Drawing.Point(492, 24);
+            this.txtNumeroComprobante.Location = new System.Drawing.Point(546, 24);
             this.txtNumeroComprobante.Name = "txtNumeroComprobante";
             this.txtNumeroComprobante.Size = new System.Drawing.Size(106, 23);
             this.txtNumeroComprobante.TabIndex = 19;
@@ -365,7 +369,7 @@
             // 
             // btnNuevaVenta
             // 
-            this.btnNuevaVenta.Location = new System.Drawing.Point(777, 113);
+            this.btnNuevaVenta.Location = new System.Drawing.Point(841, 91);
             this.btnNuevaVenta.Name = "btnNuevaVenta";
             this.btnNuevaVenta.Size = new System.Drawing.Size(136, 29);
             this.btnNuevaVenta.TabIndex = 17;
@@ -376,7 +380,7 @@
             // btnCancelarVenta
             // 
             this.btnCancelarVenta.Enabled = false;
-            this.btnCancelarVenta.Location = new System.Drawing.Point(938, 113);
+            this.btnCancelarVenta.Location = new System.Drawing.Point(841, 129);
             this.btnCancelarVenta.Name = "btnCancelarVenta";
             this.btnCancelarVenta.Size = new System.Drawing.Size(136, 29);
             this.btnCancelarVenta.TabIndex = 18;
@@ -387,7 +391,7 @@
             // btnFinalizarVenta
             // 
             this.btnFinalizarVenta.Enabled = false;
-            this.btnFinalizarVenta.Location = new System.Drawing.Point(938, 236);
+            this.btnFinalizarVenta.Location = new System.Drawing.Point(841, 271);
             this.btnFinalizarVenta.Name = "btnFinalizarVenta";
             this.btnFinalizarVenta.Size = new System.Drawing.Size(136, 27);
             this.btnFinalizarVenta.TabIndex = 19;
@@ -398,7 +402,7 @@
             // txtTotalFactura
             // 
             this.txtTotalFactura.Enabled = false;
-            this.txtTotalFactura.Location = new System.Drawing.Point(605, 236);
+            this.txtTotalFactura.Location = new System.Drawing.Point(664, 236);
             this.txtTotalFactura.Name = "txtTotalFactura";
             this.txtTotalFactura.Size = new System.Drawing.Size(89, 23);
             this.txtTotalFactura.TabIndex = 20;
@@ -406,9 +410,9 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(604, 213);
+            this.label10.Location = new System.Drawing.Point(663, 213);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 15);
+            this.label10.Size = new System.Drawing.Size(88, 15);
             this.label10.TabIndex = 21;
             this.label10.Text = "Total de factura";
             // 
@@ -426,7 +430,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(25, 190);
+            this.label12.Location = new System.Drawing.Point(25, 164);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(151, 20);
             this.label12.TabIndex = 23;
@@ -437,17 +441,17 @@
             this.lblIngresarNumeros.AutoSize = true;
             this.lblIngresarNumeros.BackColor = System.Drawing.Color.Transparent;
             this.lblIngresarNumeros.ForeColor = System.Drawing.Color.Crimson;
-            this.lblIngresarNumeros.Location = new System.Drawing.Point(518, 139);
+            this.lblIngresarNumeros.Location = new System.Drawing.Point(393, 143);
             this.lblIngresarNumeros.Name = "lblIngresarNumeros";
-            this.lblIngresarNumeros.Size = new System.Drawing.Size(154, 15);
+            this.lblIngresarNumeros.Size = new System.Drawing.Size(120, 15);
             this.lblIngresarNumeros.TabIndex = 24;
-            this.lblIngresarNumeros.Text = "Debe ingresar solo números";
+            this.lblIngresarNumeros.Text = "Ingrese solo números";
             this.lblIngresarNumeros.Visible = false;
             // 
             // chkEliminarDetalleSubfactura
             // 
             this.chkEliminarDetalleSubfactura.AutoSize = true;
-            this.chkEliminarDetalleSubfactura.Location = new System.Drawing.Point(605, 276);
+            this.chkEliminarDetalleSubfactura.Location = new System.Drawing.Point(664, 276);
             this.chkEliminarDetalleSubfactura.Name = "chkEliminarDetalleSubfactura";
             this.chkEliminarDetalleSubfactura.Size = new System.Drawing.Size(147, 19);
             this.chkEliminarDetalleSubfactura.TabIndex = 25;
@@ -455,11 +459,37 @@
             this.chkEliminarDetalleSubfactura.UseVisualStyleBackColor = true;
             this.chkEliminarDetalleSubfactura.CheckedChanged += new System.EventHandler(this.chkEliminarDetalleSubfactura_CheckedChanged);
             // 
+            // dgVenta
+            // 
+            this.dgVenta.AllowUserToAddRows = false;
+            this.dgVenta.AllowUserToDeleteRows = false;
+            this.dgVenta.AllowUserToResizeColumns = false;
+            this.dgVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVenta.Location = new System.Drawing.Point(25, 439);
+            this.dgVenta.Name = "dgVenta";
+            this.dgVenta.ReadOnly = true;
+            this.dgVenta.RowTemplate.Height = 25;
+            this.dgVenta.Size = new System.Drawing.Size(1039, 165);
+            this.dgVenta.TabIndex = 27;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Roboto Condensed", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(25, 413);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(141, 22);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "ÚLTIMAS VENTAS";
+            // 
             // Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 711);
+            this.Controls.Add(this.dgVenta);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.chkEliminarDetalleSubfactura);
             this.Controls.Add(this.lblIngresarNumeros);
             this.Controls.Add(this.label12);
@@ -483,6 +513,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutNuevaFactura.ResumeLayout(false);
             this.tableLayoutNuevaFactura.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,5 +558,7 @@
         private TextBox txtPrecioUnitario;
         private Label label13;
         private CheckBox chkEliminarDetalleSubfactura;
+        private DataGridView dgVenta;
+        private Label label14;
     }
 }

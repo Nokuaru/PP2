@@ -40,9 +40,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.navProducto = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.navCompra = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,7 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navProducto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHome)).BeginInit();
             this.SuspendLayout();
@@ -160,9 +156,6 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.navProducto);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.navCompra);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
@@ -178,7 +171,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(34, 317);
+            this.label7.Location = new System.Drawing.Point(31, 241);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 15);
             this.label7.TabIndex = 11;
@@ -188,7 +181,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 302);
+            this.label8.Location = new System.Drawing.Point(25, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 15);
             this.label8.TabIndex = 10;
@@ -200,43 +193,12 @@
             this.navProducto.BackgroundImage = global::Login.Properties.Resources.shopping_cart;
             this.navProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.navProducto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.navProducto.Location = new System.Drawing.Point(3, 259);
+            this.navProducto.Location = new System.Drawing.Point(0, 183);
             this.navProducto.Name = "navProducto";
             this.navProducto.Size = new System.Drawing.Size(103, 40);
             this.navProducto.TabIndex = 9;
             this.navProducto.TabStop = false;
             this.navProducto.Click += new System.EventHandler(this.navProducto_Click_1);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(34, 241);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "SPACE";
-            this.label6.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 226);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Compras";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // navCompra
-            // 
-            this.navCompra.BackgroundImage = global::Login.Properties.Resources.handbag;
-            this.navCompra.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.navCompra.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.navCompra.Location = new System.Drawing.Point(3, 183);
-            this.navCompra.Name = "navCompra";
-            this.navCompra.Size = new System.Drawing.Size(103, 40);
-            this.navCompra.TabIndex = 6;
-            this.navCompra.TabStop = false;
             // 
             // label4
             // 
@@ -331,7 +293,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.navHome)).EndInit();
             this.ResumeLayout(false);
@@ -342,9 +303,6 @@
         private Panel pnlTop;
         private PictureBox pictureBox1;
         private Panel panel1;
-        private Label label6;
-        private Label label5;
-        private PictureBox navCompra;
         private Label label4;
         private Label label3;
         private Label label2;

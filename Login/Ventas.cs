@@ -40,7 +40,10 @@ namespace Login
 
             //Combos del detalle de factura
             string consultaComboProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
-            
+
+            actualizarGridVentas();
+
+
 
         }
 
@@ -471,7 +474,9 @@ namespace Login
                 }
 
             }
-            
+
+            actualizarGridVentas();
+
 
 
         }
@@ -528,6 +533,17 @@ namespace Login
         private void dataGridDetalleVenta_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             ActualizaTotalDeFactura();
+        }
+
+        private void actualizarGridVentas()
+        {
+            Conexion con = new Conexion();
+            string sql = "SELECT * FROM V_Venta_VentaConDetalles;";
+            SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+            SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            DataTable dtVenta = new DataTable();
+            dtVenta.Load(dr);
+            dgVenta.DataSource = dtVenta.DefaultView;
         }
     }
 }

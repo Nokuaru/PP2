@@ -51,6 +51,10 @@
             // 
             // dgProductos
             // 
+            this.dgProductos.AllowUserToAddRows = false;
+            this.dgProductos.AllowUserToDeleteRows = false;
+            this.dgProductos.AllowUserToResizeColumns = false;
+            this.dgProductos.AllowUserToResizeRows = false;
             this.dgProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgProductos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -59,6 +63,7 @@
             this.Editar});
             this.dgProductos.Location = new System.Drawing.Point(26, 285);
             this.dgProductos.Name = "dgProductos";
+            this.dgProductos.ReadOnly = true;
             this.dgProductos.RowTemplate.Height = 25;
             this.dgProductos.Size = new System.Drawing.Size(1027, 353);
             this.dgProductos.TabIndex = 12;
@@ -71,6 +76,7 @@
             this.Eliminar.HeaderText = "Eliminar";
             this.Eliminar.MinimumWidth = 20;
             this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Eliminar.Text = "Eliminar";
             this.Eliminar.UseColumnTextForButtonValue = true;
@@ -83,6 +89,7 @@
             this.Editar.HeaderText = "Editar";
             this.Editar.MinimumWidth = 20;
             this.Editar.Name = "Editar";
+            this.Editar.ReadOnly = true;
             this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Editar.Text = "Editar";
             this.Editar.UseColumnTextForButtonValue = true;

@@ -89,3 +89,23 @@ WHERE        (dbo.Venta.idEstadoVenta = 1)
 GROUP BY dbo.Venta.idVenta, dbo.Venta.FechaVenta, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.EstadoVenta.DescripcionEstadoVenta, dbo.TipoComprobante.DescripcionTipoComprobante
 
 GO
+
+CREATE VIEW [dbo].[V_Venta_VentaConDetalles]
+AS
+SELECT        dbo.Venta.idVenta, CONVERT(varchar, dbo.Venta.FechaVenta, 103) AS Fecha, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.EstadoVenta.DescripcionEstadoVenta AS Estado, 
+                         dbo.TipoComprobante.DescripcionTipoComprobante AS [Tipo de comprobante], dbo.Venta.NumeroComprobante as [N de Comprobante], dbo.Producto.Nombre AS Producto,
+						 dbo.DetalleVenta.Cantidad AS [Cantidad Vendida], dbo.Producto.PrecioUnitarioVenta AS [Precio Unitario],
+						 ROUND(SUM(CAST(dbo.DetalleVenta.Cantidad AS int) * CAST(dbo.Producto.PrecioUnitarioVenta AS decimal(10, 2))), 1, 2) 
+                         AS [Total por Producto]
+						 
+FROM            dbo.Venta INNER JOIN
+                         dbo.Cliente ON dbo.Venta.idCliente = dbo.Cliente.idCliente INNER JOIN
+                         dbo.EstadoVenta ON dbo.Venta.idEstadoVenta = dbo.EstadoVenta.idEstadoVenta INNER JOIN
+                         dbo.TipoComprobante ON dbo.Venta.idTipoComprobante = dbo.TipoComprobante.idTipoComprobante INNER JOIN
+                         dbo.DetalleVenta ON dbo.Venta.idVenta = dbo.DetalleVenta.idVenta INNER JOIN
+                         dbo.Producto ON dbo.DetalleVenta.idProducto = dbo.Producto.idProducto
+						 
+WHERE        (dbo.Venta.idEstadoVenta = 1)
+GROUP BY dbo.Venta.idVenta, dbo.Venta.FechaVenta, dbo.Cliente.Nombre, dbo.Cliente.Apellido, dbo.EstadoVenta.DescripcionEstadoVenta, dbo.TipoComprobante.DescripcionTipoComprobante, dbo.Producto.Nombre, dbo.Venta.NumeroComprobante, dbo.DetalleVenta.Cantidad,dbo.Producto.PrecioUnitarioVenta
+
+GO
