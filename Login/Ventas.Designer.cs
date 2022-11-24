@@ -77,10 +77,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Roboto Condensed", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(25, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 22);
+            this.label1.Size = new System.Drawing.Size(89, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "VENTAS";
             // 
@@ -314,7 +314,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(184, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 15);
+            this.label6.Size = new System.Drawing.Size(122, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "Tipo de comprobante";
             // 
@@ -412,7 +412,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(663, 213);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 15);
+            this.label10.Size = new System.Drawing.Size(89, 15);
             this.label10.TabIndex = 21;
             this.label10.Text = "Total de factura";
             // 
@@ -441,7 +441,7 @@
             this.lblIngresarNumeros.AutoSize = true;
             this.lblIngresarNumeros.BackColor = System.Drawing.Color.Transparent;
             this.lblIngresarNumeros.ForeColor = System.Drawing.Color.Crimson;
-            this.lblIngresarNumeros.Location = new System.Drawing.Point(393, 143);
+            this.lblIngresarNumeros.Location = new System.Drawing.Point(574, 143);
             this.lblIngresarNumeros.Name = "lblIngresarNumeros";
             this.lblIngresarNumeros.Size = new System.Drawing.Size(120, 15);
             this.lblIngresarNumeros.TabIndex = 24;
@@ -476,10 +476,10 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Roboto Condensed", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(25, 413);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(141, 22);
+            this.label14.Size = new System.Drawing.Size(179, 22);
             this.label14.TabIndex = 26;
             this.label14.Text = "ÚLTIMAS VENTAS";
             // 

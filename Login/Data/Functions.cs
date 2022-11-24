@@ -1,4 +1,5 @@
 ﻿using Login.Data;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Login.Data
@@ -28,6 +29,32 @@ namespace Login.Data
 
 
            
+        }
+        public static string getIdUsuarioActivo()
+        {
+            string sql = "Select concat(Nombre,' ', Apellido)  from Usuario where ACTIVO = 1";
+            string returnValue = "";
+            try
+            {
+                Conexion con = new Conexion();
+                SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+                DataTable resultado = new DataTable();
+                using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    resultado.Load(reader);
+                    returnValue = resultado.Rows[0][0].ToString();
+                    con.Desconectar();
+
+                    return returnValue;
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error al obtener el usuario activo.\n" + ex);
+                throw;
+            }
+
         }
     }
 }

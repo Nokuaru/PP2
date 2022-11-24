@@ -27,7 +27,7 @@ namespace Login
             decimal ventaTotal = getVentaTotal();
             procVenta.Text = "$"+ventaTotal.ToString();
 
-
+            lblUsuarioActivo.Text = getIdUsuarioActivo();
         }
         private void Home_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -61,5 +61,9 @@ namespace Login
             nav(ventas, pnlContent);
         }
 
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

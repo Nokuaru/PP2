@@ -30,6 +30,7 @@
         {
             this.pnlTop = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.lblUsuarioActivo = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.procVenta = new System.Windows.Forms.Label();
@@ -70,11 +71,22 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.lblUsuarioActivo);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Location = new System.Drawing.Point(972, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(200, 70);
             this.panel5.TabIndex = 4;
+            // 
+            // lblUsuarioActivo
+            // 
+            this.lblUsuarioActivo.AutoSize = true;
+            this.lblUsuarioActivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblUsuarioActivo.Location = new System.Drawing.Point(63, 40);
+            this.lblUsuarioActivo.Name = "lblUsuarioActivo";
+            this.lblUsuarioActivo.Size = new System.Drawing.Size(57, 21);
+            this.lblUsuarioActivo.TabIndex = 3;
+            this.lblUsuarioActivo.Text = "label5";
             // 
             // label11
             // 
@@ -150,7 +162,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 98);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(109, 663);
+            this.panel1.Size = new System.Drawing.Size(109, 643);
             this.panel1.TabIndex = 3;
             // 
             // label7
@@ -250,7 +262,7 @@
             // pnlContent
             // 
             this.pnlContent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pnlContent.Location = new System.Drawing.Point(109, 98);
+            this.pnlContent.Location = new System.Drawing.Point(109, 88);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(1075, 663);
             this.pnlContent.TabIndex = 4;
@@ -259,7 +271,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.ClientSize = new System.Drawing.Size(1184, 741);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTop);
@@ -267,6 +279,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
+            this.Load += new System.EventHandler(this.Home_Load);
             this.pnlTop.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -301,5 +314,6 @@
         private Panel panel2;
         private Label label9;
         private Label procVenta;
+        private Label lblUsuarioActivo;
     }
 }
