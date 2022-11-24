@@ -45,6 +45,7 @@ namespace Login
 
             actualizarGridVentas();
 
+            chkEliminarDetalleSubfactura.Enabled = false;
 
 
         }
@@ -282,6 +283,7 @@ namespace Login
             txtNumericBox.Enabled = true;
             txtPrecioUnitario.Text = getPrecioUnitario().ToString();
             
+            
             ActualizaSubtotalLinea(getPrecioUnitario());
 
         }
@@ -342,7 +344,7 @@ namespace Login
                         tableLayoutPanel1.Enabled = true;
                         btnAgregarAVenta.Enabled = false;
                         combProducto.Enabled = true;
-
+                        chkEliminarDetalleSubfactura.Enabled = true;
                         btnAgregarAVenta.Enabled = true;
                         dataGridDetalleVenta.Enabled = true;
                         consCombProducto = "SELECT idCategoria, DescripcionCatProd FROM CategoriaProducto";
@@ -387,6 +389,11 @@ namespace Login
             combTipoComprobante.SelectedIndex= -1;  
             combFormaPago.SelectedIndex = -1;
             txtNumeroComprobante.ResetText();
+            txtNumeroComprobante.Enabled = true;
+            lblIngresarNumeros.Visible = false;
+            btnNuevaVenta.Enabled = true;
+            btnCancelarVenta.Enabled = false;
+
             // resetea detalle
             combProducto.SelectedIndex = -1;
             combNombreProducto.SelectedIndex = -1;
@@ -403,6 +410,7 @@ namespace Login
             combNombreProducto.Enabled = false;
             txtNumericBox.Enabled = false;
             txtSubtotalLinea.Enabled = false;
+            chkEliminarDetalleSubfactura.Enabled = false;
 
             //habilita factura
             combCliente.Enabled = true;
@@ -415,7 +423,8 @@ namespace Login
         {
             txtSubtotalLinea.Enabled = true;
             ActualizaSubtotalLinea(getPrecioUnitario());
-            
+            txtSubtotalLinea.Enabled = false;
+
         }
 
         private void btnFinalizarVenta_Click(object sender, EventArgs e)
@@ -426,24 +435,43 @@ namespace Login
             var res = DialogResult;
 
             int filas = dataGridDetalleVenta.RowCount;
-            if (filas >0) {
+            if (filas >0) 
+            {
                 string[] qry = new string[filas];
 
-                    if (filas==1)
+                if (filas==1)
+                {
+                    qry[0] = "(" + idVenta + "," + dataGridDetalleVenta[2,0].Value.ToString()+"," + dataGridDetalleVenta[3, 0].Value.ToString()+")";
+                }
+                else
+                {
+                    for (int i = 0; i < filas; i++)
                     {
-                        qry[0] = "(" + idVenta + "," + dataGridDetalleVenta[2,0].Value.ToString()+"," + dataGridDetalleVenta[3, 0].Value.ToString()+")";
-                    }
-                    else
-                    {
-                        for (int i = 0; i < filas; i++)
+                        qry[i] = "(" + idVenta + "," + dataGridDetalleVenta[2, i].Value.ToString() + "," + dataGridDetalleVenta[3, i].Value.ToString() + ")";
+                        if (i<filas-1)
                         {
-                            qry[i] = "(" + idVenta + "," + dataGridDetalleVenta[2, i].Value.ToString() + "," + dataGridDetalleVenta[3, i].Value.ToString() + ")";
-                            if (i<filas-1)
-                            {
-                                qry[i] += ",";
-                            }
+                            qry[i] += ",";
                         }
                     }
+                }
+
+                
+                // actualiza stock
+                
+               
+                string queryStock = string.Empty;
+
+                for (int i = 0; i < filas; i++)
+                {
+                    Conexion conStock = new Conexion();
+                    queryStock = "EXEC dbo.ActualizaStock @idProducto=N'" + dataGridDetalleVenta[2, i].Value.ToString() + "', @cantidadDescontar=N'" + dataGridDetalleVenta[3, i].Value.ToString() + "'";
+                    SqlCommand comnd = new SqlCommand(queryStock, conStock.Conectar());
+                    comnd.ExecuteNonQuery();
+                    conStock.Desconectar();
+                }
+                
+
+
 
                 acumulaQry = "INSERT INTO DetalleVenta (idVenta,idProducto,Cantidad) VALUES ";
                 for (int i = 0; i < qry.Length; i++)
@@ -453,7 +481,8 @@ namespace Login
 
                 try
                 {
-
+                    
+                    // inserta valores de detalleVenta
                     Conexion con = new Conexion();
                     SqlCommand cmd = new SqlCommand(acumulaQry, con.Conectar());
                     cmd.ExecuteNonQuery();
@@ -481,6 +510,7 @@ namespace Login
             actualizarGridVentas();
             decimal ventaTotal = getVentaTotal();
             //Home.procVentaPriv = "$" + ventaTotal.ToString();
+
 
 
 
@@ -514,7 +544,7 @@ namespace Login
 
                 chkEliminarDetalleSubfactura.BackColor = Color.Red;
                 dataGridDetalleVenta.AllowUserToDeleteRows = true;
-                MessageBox.Show("Ahora puede eliminar las filas del detalle de factura que desee. Una vez finalizado quite la tilde de \"Eliminar detalle de factura\". ");
+                MessageBox.Show("Ahora puede eliminar las filas del detalle de factura que desee seleccionando la fila y presionando suprimir. Una vez finalizado quite la tilde de \"Eliminar detalle de factura\". ");
 
             }
             else
