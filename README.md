@@ -56,6 +56,11 @@ public Conexion()
 	con = new SqlConnection(@"Data Source = %NOMBREDESERVER%; Initial Catalog = Grupo42; Integrated Security = True");
 }
 ```
+8) Ejecutar utilizando el siguiente usuario
+```
+Usuario: nokuaru 
+Contraseña: 123456
+```
 ## **Documentación Complementaria**
 
 [Google Drive](https://drive.google.com/drive/folders/1stJxENv8zSXfTaXmVVeULtq8sT1-aM-f?usp=share_link)
