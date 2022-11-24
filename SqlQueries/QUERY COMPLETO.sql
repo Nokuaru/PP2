@@ -201,7 +201,7 @@ INSERT INTO EstadoUsuario
 INSERT INTO FormaPago
 			VALUES ('Efectivo'),('Débito'),('Crédito'),('MercadoPago')
 INSERT INTO CategoriaProducto
-			VALUES ('Gaseosas'),('Jugos'),('Buffet'),('Golosinas'),('Comida')
+			VALUES ('Bebidas'),('Buffet'),('Golosinas'),('Comida'),('Helados')
 INSERT INTO EstadoCompra
 			VALUES ('Paga'),('Impaga')
 INSERT INTO EstadoVenta
@@ -216,26 +216,60 @@ VALUES ('FACTURA A'), ('FACTURA B'), ('NOTA DE DEBITO'), ('NOTA DE CREDITO')
 			
 INSERT INTO Usuario
 			VALUES	('1','Facundo','Tomas','32478178','nokuaru@gmail.com','Nokuaru','123456','1121739785',DEFAULT),
-					('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321',DEFAULT)
+				('1','Gonzalo','Olarte','12345678','olartegonzalo@gmail.com','Olarte','123456','987654321',DEFAULT)
 INSERT INTO Proveedor (Cuit,RazonSocial,Direccion,Mail,Telefono) 
-			VALUES	('22222222222','McDonalds','General Paz 5445' ,'a@a.com','11111222'),
-					('11111111111','BurgerKing','Amenabar 5445' ,'b@b.com','32323232'),
-					('33333333333','PumperNic','Belgrano 5445' ,'c@c.com','42424242')
+			VALUES	('20123456789','BUFFET','General Paz 5445' ,'a@a.com','11111222'),
+				('20321654987','Kossal Materias Primas','Amenabar 5445' ,'b@b.com','32323232'),
+				('20159753648','Distribucion Alcamar','Belgrano 5445' ,'c@c.com','42424242'),
+				('20397133489','SODIMAC','Blabla 3232' ,'d@c.com','42424242'),
+				('20697416541','Vital','Bleble 121' ,'c@c.com','42424242'),
+				('20364978453','MaxiConsumo','Bleble 121' ,'c@c.com','42424242'),
+				('20159753694','Diarco','Bleble 121' ,'c@c.com','42424242')
+				
 INSERT INTO Cliente
-			VALUES	('1','Jorge','Capitanich','7894561', 'jorgito@gmail.com','1513254857',DEFAULT,DEFAULT),
-					('2','Alberto','Fernández','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT)
+			VALUES	('1','Presencial','Presencial','', '','',DEFAULT,DEFAULT),
+				('2','Jorge','Capitanich','25589289', 'chaco@gmail.com','1512324257',DEFAULT,DEFAULT),
+				('2','Alberto','Fernández','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT),
+				('1','Arturo','Frondizi','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT),
+				('1','Arturo','Puig','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT),
+				('1','Emilio','Disi','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT),
+				('1','Jorge','Samid','25589289', 'tibio@gmail.com','1512324257',DEFAULT,DEFAULT)
+				
 INSERT INTO Producto (idCategoria,idProveedor,Nombre,Cantidad,PrecioUnitarioVenta,PrecioUnitarioCompra)
-			VALUES	('1','1001','Coca Cola 500ml','50','90.25','135'),
-					('5','1002','Empanada JyQ','23','73.55','155')
+			VALUES	('1','1003','Coca Cola 500ml','50','135','90.25'),
+				('1','1003','Sprite 500ml','50','135','90.25'),
+				('1','1004','Heineken 1L','30','235','180'),
+				('2','1000','Empanada JyQ','23','155','73.55'),
+				('2','1000','Empanada Carne','13','155','73.55'),
+				('2','1000','Sugus x20','18','40','155')
 
 INSERT INTO Compra (idUsuario,idEstadoCompra,TipoComprobante,NumeroComprobante,Total,FormaPago)
 			VALUES	('1000','1','A','000021','255','1'),
-					('1001','2','B','000022','384','2')
+				('1001','2','B','000022','384','2')
 INSERT INTO Venta (idCliente, idUsuario, idTipoComprobante,NumeroComprobante,FechaVenta,Total,idEstadoVenta,idFormaPago)
-			VALUES ('1000','1001',1,'0000028',DEFAULT,'453','1','1')
+			VALUES  ('1000','1001',1,'0000028',DEFAULT,'835','1','1'),
+				('1001','1001',2,'0000231',DEFAULT,'422','1','1'),
+				('1002','1001',2,'0000232',DEFAULT,'159','1','1'),
+				('1003','1001',2,'0000233',DEFAULT,'233','1','1'),
+				('1004','1001',1,'0000029',DEFAULT,'425','1','1'),
+				('1005','1001',1,'0000030',DEFAULT,'177','1','1')
 INSERT INTO DetalleVenta (idVenta,idProducto,Cantidad)
-			VALUES	('1000','1000','20'),
-					('1000','1001','9')
+			VALUES	('1000','1000','2'),
+				('1000','1001','3'),
+				('1000','1004','2'),
+				('1001','1000','2'),
+				('1001','1003','2'),
+				('1001','1005','1'),
+				('1002','1000','1'),
+				('1002','1001','1'),
+				('1002','1003','2'),
+				('1003','1000','1'),
+				('1003','1004','3'),
+				('1004','1000','1'),
+				('1004','1001','1'),
+				('1005','1000','2')
+	
+				
 INSERT INTO DetalleCompra (idCompra,idProducto,Cantidad)
 			VALUES	('1000','1000','20'),
 					('1000','1001','15'),
