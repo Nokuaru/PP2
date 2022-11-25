@@ -34,7 +34,7 @@ namespace Login
             DataTable dtProducto = new DataTable();
             dtProducto.Load(dr);
             dgProductos.DataSource = dtProducto.DefaultView;
-            sql = "SELECT * FROM V_Venta_VentaConDetalles ORDER BY Fecha DESC;";
+            sql = "SELECT * FROM V_Venta_ListadoVentas ORDER BY Fecha DESC;";
             cmd = new SqlCommand(sql, con.Conectar());
             dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             DataTable dtVenta = new DataTable();

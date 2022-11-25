@@ -215,7 +215,7 @@ namespace Login
         {
             string tipoProducto, nombreProducto, cantidad, idTipoProducto, subtotal;
 
-            tipoProducto = combNombreProducto.Text;
+            tipoProducto = combProducto.Text;
             idTipoProducto = combNombreProducto.SelectedValue.ToString();
             nombreProducto = combNombreProducto.Text.ToString();
             cantidad = txtNumericBox.Value.ToString();

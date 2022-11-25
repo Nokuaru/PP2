@@ -126,8 +126,11 @@ namespace Login
                         string nombre = txtNombre.Text;
                         string cantidad = txtCantidad.Text;
                         string preciocompra = txtPrecioCompra.Text;
+                        preciocompra = preciocompra.Replace(",", ".");
                         string precioventa = txtPrecioVenta.Text;
+                        precioventa = precioventa.Replace(",", ".");
                         string sql = "INSERT INTO Producto VALUES ('" + categoria + "'," + proveedor + ",'" + nombre + "'," + cantidad + "," + preciocompra + "," + precioventa + ")";
+                        //sql = sql.Replace(",", ".");
                         SqlCommand cmd = new SqlCommand(sql, con.Conectar());
                         cmd.ExecuteNonQuery();
                         con.Desconectar();
@@ -165,10 +168,14 @@ namespace Login
                         string nombre = txtNombre.Text;
                         string cantidad = txtCantidad.Text;
                         string preciocompra = txtPrecioCompra.Text;
+                        preciocompra = preciocompra.Replace(",", ".");
                         string precioventa = txtPrecioVenta.Text;
+                        precioventa = precioventa.Replace(",", ".");
                         string idproducto = txtID.Text;
                         string sql = "UPDATE Producto SET idCategoria='" + idCategoria + "',idProveedor='" + idProveedor + "',Nombre='" + nombre + "',Cantidad='" + cantidad + "',PrecioUnitarioCompra='" + preciocompra + "',PrecioUnitarioVenta='" + precioventa + "'    WHERE idProducto='" + idproducto + "'";
+                        //sql=sql.Replace(",", ".");
                         SqlCommand cmd = new SqlCommand(sql, con.Conectar());
+                        //MessageBox.Show(sql);
                         cmd.ExecuteNonQuery();
                         con.Desconectar();
                         recargarProductos();
@@ -215,6 +222,7 @@ namespace Login
         private void btnReset_Click(object sender, EventArgs e)
         {
             resetearCamposProductos();
+            recargarProductos();
         }
     
 
@@ -283,9 +291,9 @@ namespace Login
 
 
                 }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        
+                    MessageBox.Show(ex.Message);
                     }
 
 
