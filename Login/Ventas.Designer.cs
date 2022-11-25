@@ -505,7 +505,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Ventas";
-            this.Text = "Ventas";
+            this.Text = "iok";
             this.Load += new System.EventHandler(this.Ventas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtNumericBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDetalleVenta)).EndInit();

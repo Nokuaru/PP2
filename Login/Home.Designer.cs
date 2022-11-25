@@ -82,7 +82,7 @@
             // 
             this.lblUsuarioActivo.AutoSize = true;
             this.lblUsuarioActivo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblUsuarioActivo.Location = new System.Drawing.Point(63, 40);
+            this.lblUsuarioActivo.Location = new System.Drawing.Point(40, 26);
             this.lblUsuarioActivo.Name = "lblUsuarioActivo";
             this.lblUsuarioActivo.Size = new System.Drawing.Size(57, 21);
             this.lblUsuarioActivo.TabIndex = 3;
@@ -95,12 +95,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(63, 15);
+            this.label11.Location = new System.Drawing.Point(0, 26);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(81, 21);
+            this.label11.Size = new System.Drawing.Size(46, 21);
             this.label11.TabIndex = 2;
-            this.label11.Text = "USUARIO";
+            this.label11.Text = "Hola";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2
@@ -115,10 +115,11 @@
             // procVenta
             // 
             this.procVenta.AutoSize = true;
-            this.procVenta.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.procVenta.Location = new System.Drawing.Point(73, 49);
+            this.procVenta.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.procVenta.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.procVenta.Location = new System.Drawing.Point(46, 45);
             this.procVenta.Name = "procVenta";
-            this.procVenta.Size = new System.Drawing.Size(57, 21);
+            this.procVenta.Size = new System.Drawing.Size(76, 30);
             this.procVenta.TabIndex = 1;
             this.procVenta.Text = "label5";
             // 
